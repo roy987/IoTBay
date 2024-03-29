@@ -25,11 +25,14 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Welcome Page</title>
+        <style>
+        
+        </style>
     </head>
     <body bgcolor="<%= favcol %>">
         <% if (tos) { %>
-            <p>Welcome, <%= name%>!</p>
+            <h1>Welcome, <%= name%>!</h1>
             <p>Your Email is <%= email%></p>
             <p>Your password is <%= password%></p>
             <p>Your gender is <%= gender%></p>

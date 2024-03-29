@@ -7,9 +7,13 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page session="true" %>
 
-  <%
-                    User user = (User)session.getAttribute("user");
-   %>
+ <%
+    User user = (User) session.getAttribute("user");
+    String backgroundColour = "";
+    if (user != null) {
+        backgroundColour = user.getFavouriteColour();
+    }
+%>  
 <!DOCTYPE html>
 <html>
     <head>
@@ -20,7 +24,7 @@
             display: flex;
             justify-content: space-between;
             padding: 10px;
-            background-color: <%= user.getFavouriteColour()%>;
+            background-color: <%= backgroundColour %>;
             }
             .logout {
             text-align: right;
@@ -38,7 +42,7 @@
     </head>
     <body>
         <div class="container">
-            <div class="title">Diary Keeper</div>
+            <div class="title">IoTBay</div>
             <div class="details">
                 <%
                     if(user!=null){

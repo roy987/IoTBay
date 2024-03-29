@@ -15,6 +15,6 @@
     <body>
           <%HttpSession userSession = request.getSession();
            userSession.invalidate(); %>
-        <h1>You have been logged out. Click <a href="index.jsp">here</a> to return to the main page</h1>
+        <p>You have been logged out. Click <a href="index.jsp">here</a> to return to the main page</p>
     </body>
 </html>

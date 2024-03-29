@@ -9,9 +9,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Register Page</title>
+          <style>
+            .title {
+                font-weight: bold;
+            }
+        </style>
     </head>
     <body>
+          <div>
+            <h1 class="title">Register</h1>
         <form action="./welcome.jsp" method="POST">
             <label>Email: </label>
             <input name="email"></input><br>
@@ -35,5 +42,7 @@
              
              
         </form>
+            
+                </div>
     </body>
 </html>
