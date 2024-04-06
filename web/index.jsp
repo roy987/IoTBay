@@ -57,6 +57,7 @@
                 <% } else { %>
                     <p>You are not logged in</p>
                     <div class="logout">
+                        <a href="login.jsp">Login</a> <br>
                         <a href="register.jsp">Register</a>
                     </div>
                 <% } %>
