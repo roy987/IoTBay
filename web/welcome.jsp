@@ -4,8 +4,11 @@
     Author     : Roy
 --%>
 <%@ page import="uts.isd.model.User" %>
-<%@ page import="java.util.*"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page session="true" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.io.Serializable" %>
 <!DOCTYPE html>
 <%
     String name = request.getParameter("name");
@@ -20,7 +23,14 @@
 
     // Storing the User instance into the session
     HttpSession userSession = request.getSession();
+    
+    List<User> userList = (List<User>) session.getAttribute("userList");
+    userList.add(user);
+    session.setAttribute("userList", userList);
+    
     session.setAttribute("user", user);
+    
+ 
 %>
 <html>
     <head>

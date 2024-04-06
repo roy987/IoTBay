@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page session="true" %>
 
 <!DOCTYPE html>
 <html>
@@ -13,8 +14,12 @@
         <title>Logout Page</title>
     </head>
     <body>
-          <%HttpSession userSession = request.getSession();
-           userSession.invalidate(); %>
+          <% 
+              session.setAttribute("user", null);
+              
+//              HttpSession userSession = request.getSession();
+//           userSession.invalidate(); 
+          %>
         <p>You have been logged out. Click <a href="index.jsp">here</a> to return to the main page</p>
     </body>
 </html>
