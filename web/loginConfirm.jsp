@@ -6,6 +6,10 @@
 
 <%@ page import="uts.isd.model.User" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page session="true" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.io.Serializable" %>
 <%--<%@ page session="true" %>--%>
 
 <!DOCTYPE html>
@@ -14,10 +18,20 @@
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        String expected_email = "Iot@mail.com";
-        String expected_password = "12345";
+        List<User> userList = (List<User>) session.getAttribute("userList");
 
-        if((email == expected_email) && (password == expected_password)){
+        boolean user_found = false;
+
+        int user_index;
+        for (User user: userList) {
+            if  (email.equals(user.getEmail()) & password.equals(user.getPassword())) {
+               user_found = true;
+               session.setAttribute("user", user);
+            }
+        }
+        
+//        if (session_user != null) {
+        if (user_found) {
     %>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -30,11 +44,10 @@
     </head>
     <body>
         <h1>Login Success</h1>
-        <p><a href="welcome.jsp">Continue</a></p>
+        <p><a href="index.jsp">Continue</a></p>
     </body>
     <% } else { %>
-        
-       
+
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Failed</title>

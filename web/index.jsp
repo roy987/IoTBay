@@ -6,6 +6,9 @@
 <%@ page import="uts.isd.model.User" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page session="true" %>
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.io.Serializable" %>
 
  <%
     User user = (User) session.getAttribute("user");
@@ -13,6 +16,15 @@
     if (user != null) {
         backgroundColour = user.getFavouriteColour();
     }
+    
+    List<User> userList = (List<User>) session.getAttribute("userList");
+            
+    if (userList == null) {
+        userList = new ArrayList<>();
+        userList.add(new User("Iot1@mail.com", "Iot1", "12345", "M", "red"));
+        userList.add(new User("Iot2@mail.com", "Iot1", "qwerty", "F", "yellow"));
+        session.setAttribute("userList", userList);
+     }
 %>  
 <!DOCTYPE html>
 <html>
