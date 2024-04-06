@@ -37,7 +37,7 @@
             <p>Your password is <%= password%></p>
             <p>Your gender is <%= gender%></p>
             <p>Your favourite colour is <%= favcol%></p>
-            <p>Click <a href="index.jsp">here</a> to proceed to the main page.</p>
+            <p>Click <a href="main.jsp">here</a> to proceed to the main page.</p>
         <% } else { %>
             <p>Sorry, you must agree to the Terms of Service.</p>
             <br>
