@@ -24,11 +24,16 @@
     // Storing the User instance into the session
     HttpSession userSession = request.getSession();
     
-    List<User> userList = (List<User>) session.getAttribute("userList");
-    userList.add(user);
-    session.setAttribute("userList", userList);
+    List<User> userList = (List<User>) userSession.getAttribute("userList");
+    if (userList == null) {
+        userList = new ArrayList<>();
+    }
     
-    session.setAttribute("user", user);
+    userList.add(user);
+    
+    userSession.setAttribute("userList", userList);
+    userSession.setAttribute("user", user);
+
     
  
 %>
