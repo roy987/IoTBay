@@ -44,7 +44,7 @@
     </head>
     <body>
         <h1>Login Success</h1>
-        <p><a href="index.jsp">Continue</a></p>
+        <p><a href="main.jsp">Continue</a></p>
     </body>
     <% } else { %>
 
