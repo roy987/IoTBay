@@ -10,81 +10,84 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.io.Serializable" %>
 
- <%
-    User user = (User) session.getAttribute("user");
-    String backgroundColour = "";
-    if (user != null) {
-        backgroundColour = user.getFavouriteColour();
-    }
-    
-    List<User> userList = (List<User>) session.getAttribute("userList");
-            
-    if (userList == null) {
-        userList = new ArrayList<>();
-        userList.add(new User("Iot1@mail.com", "Iot1", "12345", "M", "red"));
-        userList.add(new User("Iot2@mail.com", "Iot1", "qwerty", "F", "yellow"));
-        session.setAttribute("userList", userList);
-     }
-%>  
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Index Page</title>
         <style>
-            .container {
-            display: flex;
-            justify-content: space-between;
-            padding: 10px;
-            background-color: <%= backgroundColour %>;
+            .page {
+            background-color:#FAF9F6;
             }
-            .logout {
-            text-align: right;
+            .header {
+            padding:20px;
+            background-color: lightblue;
+            border-radius: 10px; 
+            display:flex;
+            text-align:center;
+            justify-content:space-between;
+            }
+             .login {
+            text-align: start;
+            align-items:end;
             }
             .title {
-                font-weight: bold;
+            font-weight: bold;
+            font-size:60px;
+            text-align: center;
+            display:flex;
+    
+            align-items:center;
             }
             .details {
-                margin-top: 50px;
+            margin-top: 20px;
+            font-size:20px;
+            font-style:italic;
+            
             }
             .pageList {
-                margin-left: 20px;
+            margin-left: 20px;
+            }
+            .pageContent {
+            padding:30px;
+            padding-top:15px;
+            }
+
+            .imageSection{
+            display:flex;
+            justify-content:center;
+            margin-top:6%;            
+            }
+            .image {
+            border-radius:20px;
+            width:90%;
+            opacity:0.5;
+            height:10%;
+            
             }
         </style>
     </head>
-    <body>
-        <div class="container">
+    <body class="page">
+       <div class="header">
             <div class="title">IoTBay</div>
-            <div class="details">
-                <%
-                    if(user!=null){
-                %>
-                    <p>You are logged in as <%= user.getName() %> &lt;<%= user.getEmail() %>&gt;</p>
-                
-               
-                    <div class="logout">
-                    <a href="logout.jsp">Logout</a>
-                    </div>
             
-                <% } else { %>
-                    <p>You are not logged in</p>
-                    <div class="logout">
-                        <a href="login.jsp">Login</a> <br>
-                        <a href="register.jsp">Register</a>
-                    </div>
-                <% } %>
+            <div class="login">
+                <p>You are not logged in</p>
+                <a href="login.jsp">Login</a> <br>
+                <a href="register.jsp">Register</a>
             </div>
-            
-        </div>
-        <%
-                    
-            if(user!=null){
-        %>
-            <div>
-                <li class="pageList">
-                    <a href="edit_user.jsp">My Account</a>
-                </li>
-            </div>
-        <% } %>
-    </body>
+       </div>
+       <div>
+           <div class="pageContent">
+               <div class="details">
+                   <p>Hi! Welcome to IoTBay, your one stop shop for all the devices you need</p>
+                     
+               </div>
+                       <div class="imageSection">
+                           <img class="image" src="Resources/new-footer-image.png" alt="Image at bottom of main page">
+                       </div>
+           </div>
+       </div>
+   </body>
 </html>
