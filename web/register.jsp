@@ -7,18 +7,57 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+    <style>
+            
+            .title {
+                font-weight: bold;
+                font-size:60px;
+                text-align: center;
+                display:flex;
+                align-items:center;
+            }
+            
+            .header {
+                padding:30px;
+                background-color: lightblue;
+                border-radius: 10px; 
+                display:flex;
+                text-align:center;
+                justify-content:space-between;
+            }
+            
+            .details {
+                margin-top: 50px;
+                font-size: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: left; 
+            }
+
+            label {
+                width: 150px; 
+                display: inline-block;
+            }
+            
+            .terms-label {
+                width: auto; 
+                white-space: nowrap; 
+                margin-right: 10px; 
+            }
+          
+    </style>
+    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register Page</title>
-          <style>
-            .title {
-                font-weight: bold;
-            }
-        </style>
     </head>
     <body>
-          <div>
-            <h1 class="title">Register</h1>
+        <div class="header">
+            <div class="title">Register</div>
+        </div>
+        
+        <div class="details">
         <form action="./welcome.jsp" method="POST">
             <label>Email: </label>
             <input name="email"></input><br>
@@ -35,7 +74,7 @@
                 <label>Favorite Color: </label>
             <input name="favcol"></input><br>
              <br>
-                <label>Terms And Conditions </label>
+                <label class="terms-label">Terms And Conditions: </label>
             <input  type="checkbox" name="tos"></input><br>
              <br>
             <input type="submit" value="Register">
@@ -43,6 +82,6 @@
              
         </form>
             
-                </div>
+        </div>
     </body>
 </html>
