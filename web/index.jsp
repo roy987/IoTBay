@@ -10,6 +10,16 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.io.Serializable" %>
 
+<% 
+    HttpSession userSession = request.getSession();
+    List<User> userList = (List<User>) userSession.getAttribute("userList");
+
+    if (userList == null) {
+        userList = new ArrayList<>();
+    }
+    
+    userSession.setAttribute("userList", userList);
+%>
 
 <!DOCTYPE html>
 <html>

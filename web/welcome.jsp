@@ -25,9 +25,6 @@
     HttpSession userSession = request.getSession();
     
     List<User> userList = (List<User>) userSession.getAttribute("userList");
-    if (userList == null) {
-        userList = new ArrayList<>();
-    }
     
     userList.add(user);
     

@@ -11,26 +11,65 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.io.Serializable" %>
 <%--<%@ page session="true" %>--%>
+<%
+    String email = request.getParameter("email");
+    String password = request.getParameter("password");
+
+    List<User> userList = (List<User>) session.getAttribute("userList");
+
+    boolean user_found = false;
+
+    int user_index;
+    for (User user: userList) {
+        if  (email.equals(user.getEmail()) & password.equals(user.getPassword())) {
+           user_found = true;
+           session.setAttribute("user", user);
+        }
+    }
+%> 
 
 <!DOCTYPE html>
 <html>
-    <%
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-
-        List<User> userList = (List<User>) session.getAttribute("userList");
-
-        boolean user_found = false;
-
-        int user_index;
-        for (User user: userList) {
-            if  (email.equals(user.getEmail()) & password.equals(user.getPassword())) {
-               user_found = true;
-               session.setAttribute("user", user);
-            }
+    <style>
+        .title {
+            font-weight: bold;
+            font-size:60px;
+            text-align: center;
+            display:flex;
+            align-items:center;
         }
-        
-//        if (session_user != null) {
+
+        .header {
+            padding:30px;
+            background-color: lightblue;
+            border-radius: 10px; 
+            display:flex;
+            text-align:center;
+            justify-content:space-between;
+        }
+
+        .details {
+            margin-top: 50px;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: left; 
+        }
+
+        label {
+            width: 150px; 
+            display: inline-block;
+        }
+
+        .terms-label {
+            width: auto; 
+            white-space: nowrap; 
+            margin-right: 10px; 
+        }
+
+    </style>
+    <%
         if (user_found) {
     %>
     <head>
@@ -43,8 +82,12 @@
         </style>
     </head>
     <body>
-        <h1>Login Success</h1>
-        <p><a href="main.jsp">Continue</a></p>
+        <div class="header">
+            <div class="title">Login Success</div>
+        </div>
+        <div class="details">
+            <p><a href="main.jsp">Continue</a></p>
+        </div>
     </body>
     <% } else { %>
 
@@ -58,8 +101,13 @@
         </style>
     </head>
     <body>
-        <h1>Login Failure</h1>
-        <p><a href="login.jsp">Back</a></p>
+        
+        <div class="header">
+            <div class="title">Login Failed</div>
+        </div>
+        <div class="details">
+            <p><a href="login.jsp">Back</a></p>
+        </div>
     </body>
     <% } %>
        
