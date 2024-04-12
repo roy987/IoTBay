@@ -1,9 +1,3 @@
-<%-- 
-    Document   : loginConfirm
-    Created on : 6 Apr 2024, 10:58:48 am
-    Author     : jakesolsky
---%>
-
 <%@ page import="uts.isd.model.User" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page session="true" %>
@@ -15,19 +9,16 @@
     // Retrieve email and password from request parameters
     String email = request.getParameter("email");
     String password = request.getParameter("password");
-
     // Retrieve user list from session
     List<User> userList = (List<User>) session.getAttribute("userList");
-
     // Initialize variables to track login status
     boolean user_found = false;
-    int user_index;
-    for (User user: userList) {
-        if  (email.equals(user.getEmail()) & password.equals(user.getPassword())) {
-           user_found = true;
-           
-           session.setAttribute("user", user);
-           break;
+    // Iterate over user list to check for matching credentials
+    for (User user : userList) {
+        if (email.equals(user.getEmail()) && password.equals(user.getPassword())) {
+            // Set "user" attribute in session upon successful login
+            user_found = true;
+            session.setAttribute("user", user);
         }
     }
 %> 
@@ -54,8 +45,6 @@
         .details {
             margin-top: 50px;
             font-size: 20px;
-            display: flex;
-            flex-direction: column;
             align-items: center;
             text-align: left; 
         }
@@ -85,7 +74,7 @@
         </style>
     </head>
     <body>
-
+        <!-- Header section for login success -->
         <div class="header">
             <div class="title">Login Success</div>
         </div>
@@ -106,10 +95,7 @@
         </style>
     </head>
     <body>
-        <div>
-            <%= user_dis %> <br>
-            <%= user_p %>
-        </div>
+        <!-- Header section for login failure -->
         <div class="header">
             <div class="title">Login Failed</div>
         </div>
@@ -119,6 +105,5 @@
         </div>
     </body>
     <% } %>
-       
-</html>
 
+</html>
