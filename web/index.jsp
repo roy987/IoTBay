@@ -85,15 +85,15 @@
     <body class="page">
        <div class="header">
             <div class="title">IoTBay</div>
-            
             <div class="login">
                 <p>You are not logged in</p>
                 <a href="login.jsp">Login</a> <br>
                 <a href="register.jsp">Register</a>
             </div>
-            <div class="imageSection">
-                <img class="image" src="Resources/new-footer-image.png" alt="Image at bottom of main page">
-            </div>
+       </div>
+
+        <div class="imageSection">
+            <img class="image" src="Resources/new-footer-image.png" alt="Image at bottom of main page">
         </div>
     </div>
 </body>
