@@ -18,12 +18,20 @@
     List<User> userList = (List<User>) session.getAttribute("userList");
 
     boolean user_found = false;
-
+    String user_dis = "";
+    String user_p = "";
+        
     int user_index;
     for (User user: userList) {
+    
+        user_dis += user.getEmail();
+        user_p += user.getPassword();
+        
         if  (email.equals(user.getEmail()) & password.equals(user.getPassword())) {
            user_found = true;
+           
            session.setAttribute("user", user);
+           break;
         }
     }
 %> 
@@ -82,6 +90,7 @@
         </style>
     </head>
     <body>
+
         <div class="header">
             <div class="title">Login Success</div>
         </div>
@@ -101,7 +110,10 @@
         </style>
     </head>
     <body>
-        
+        <div>
+            <%= user_dis %> <br>
+            <%= user_p %>
+        </div>
         <div class="header">
             <div class="title">Login Failed</div>
         </div>

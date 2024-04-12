@@ -42,10 +42,10 @@
     </head>
     <body>
           <% 
-              session.setAttribute("user", null);
+//            session.setAttribute("user", null);
               
-//              HttpSession userSession = request.getSession();
-//           userSession.invalidate(); 
+            HttpSession userSession = request.getSession();
+            userSession.invalidate(); 
           %>
         <div class="header">
           <div class="title">You have been logged out.</div>

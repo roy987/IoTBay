@@ -16,9 +16,9 @@
 
     if (userList == null) {
         userList = new ArrayList<>();
+        userList.add(new User("iot@mail.com", "Iot1", "123", "M", "red"));
     }
-    
-    userSession.setAttribute("userList", userList);
+    session.setAttribute("userList", userList); 
 %>
 
 <!DOCTYPE html>
@@ -74,7 +74,7 @@
             width:90%;
             opacity:0.5;
             height:10%;
-            
+          
             }
         </style>
     </head>

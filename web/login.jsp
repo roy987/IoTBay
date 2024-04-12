@@ -56,14 +56,15 @@
             <div class="title">Login</div>
         </div>
         <div class="details">
+        <p><a href="index.jsp">Back</a></p>
         <form action="./loginConfirm.jsp" method="post">
-        <label>Email: </label>
-            <input name="email"></input><br>
-            <br>
-        <label>Password: </label>
-            <input name="password" type="password"></input><br>
-            <br>
-        <input type="submit" value="login">
+            <label>Email: </label>
+                <input name="email"></input><br>
+                <br>
+            <label>Password: </label>
+                <input name="password" type="password"></input><br>
+                <br>
+            <input type="submit" value="login">
         <form/>
         </div>
     </body>
