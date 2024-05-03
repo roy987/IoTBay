@@ -10,13 +10,13 @@ import java.sql.*;
 
 public class DBManager {
 
-private Statement st;
-   
-public DBManager(Connection conn) throws SQLException {       
-   st = conn.createStatement();   
-}
+    private Statement st; 
+    
+    public DBManager(Connection conn) throws SQLException {       
+       st = conn.createStatement();   
+    }
 
-// Find user by email and password in the database
+    // Find user by email and password in the database
     public User findUser(String email, String password) throws SQLException {
         String query = "SELECT * FROM users WHERE email = '" + email + "' AND password = '" + password + "'";
         ResultSet rs = st.executeQuery(query);

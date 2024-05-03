@@ -10,32 +10,30 @@ import java.sql.SQLException;
 
  
 
-public class DBConnector extends DB{
+public class DBConnector extends DB {
 
- 
+    public DBConnector() throws ClassNotFoundException, SQLException {
 
-public DBConnector() throws ClassNotFoundException, SQLException {
+    Class.forName(driver);
 
-Class.forName(driver);
+    conn = DriverManager.getConnection(URL+db, dbuser, dbpass);
 
-conn = DriverManager.getConnection(URL+db, dbuser, dbpass);
+    }
 
-}
 
- 
 
-public Connection openConnection(){
+    public Connection openConnection(){
 
-return this.conn;
+    return this.conn;
 
-}
+    }
 
- 
 
-public void closeConnection() throws SQLException {
 
-this.conn.close();
+    public void closeConnection() throws SQLException {
 
-}
+    this.conn.close();
+
+    }
 
 }

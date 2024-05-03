@@ -59,7 +59,7 @@
         <!-- Form section for user login -->
         <div class="details">
         <p><a href="index.jsp">Back</a></p>
-        <form action="./loginConfirm.jsp" method="post">
+        <form action="LoginController.jsp" method="post">
             <label>Email: </label>
                 <input name="email"></input><br>
                 <br>
