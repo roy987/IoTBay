@@ -30,9 +30,9 @@ public class LoginController extends HttpServlet {
         String password = request.getParameter("password");
         //5- retrieve the manager instance from session      
         DBManager manager = (DBManager) session.getAttribute("manager");
-
-        User user = null;       
-        try {       
+        System.out.println("manager :" + manager);
+        User user = null;     
+        try {
             //6- find user by email and password
             user = manager.findUser(email, password);
         } catch (SQLException ex) {           

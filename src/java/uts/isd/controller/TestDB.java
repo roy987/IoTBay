@@ -13,14 +13,9 @@ import java.util.logging.*;
 import uts.isd.model.dao.*;
 
 
-
- 
-
 public class TestDB {
 
 private static Scanner in = new Scanner(System.in);
-
- 
 
 public static void main(String[] args) {
 

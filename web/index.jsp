@@ -11,21 +11,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.io.Serializable" %>
 
-<% 
-    // Retrieve or create a session to manage user data
-    HttpSession userSession = request.getSession();
-    
-    // Retrieve the user list from the session
-    List<User> userList = (List<User>) userSession.getAttribute("userList");
-
-    // If the user list is null (first session access), create a new list
-    if (userList == null) {
-        userList = new ArrayList<>();
-        userList.add(new User("iot@mail.com", "Iot1", "123", "M", "red"));
-    }
-    session.setAttribute("userList", userList); 
-%>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -96,5 +81,7 @@
             <img class="image" src="Resources/new-footer-image.png" alt="Image at bottom of main page">
         </div>
     </div>
+    
+    <jsp:include page="/ConnServlet" flush="true" />
 </body>
 </html>

@@ -5,7 +5,6 @@
 package uts.isd.controller;
 
 
-
 import java.io.IOException;
 
 import java.sql.Connection;
@@ -36,9 +35,6 @@ import uts.isd.model.dao.*;
  
 
 public class ConnServlet extends HttpServlet {
-
-
-
     private DBConnector db;
 
     private DBManager manager;
@@ -50,7 +46,6 @@ public class ConnServlet extends HttpServlet {
     @Override //Create and instance of DBConnector for the deployment session
 
     public void init() {
-
         try {
 
             db = new DBConnector();
@@ -63,33 +58,26 @@ public class ConnServlet extends HttpServlet {
 
     }
 
-
-
     @Override //Add the DBConnector, DBManager, Connection instances to the session
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html;charset=UTF-8");       
-
         HttpSession session = request.getSession();
-
         conn = db.openConnection();       
 
         try {
-
             manager = new DBManager(conn);
-
+            session.setAttribute("manager", manager);  
+            System.out.println("Manager Set");
         } catch (SQLException ex) {
-
+            System.out.println("Manager Failed");
             Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);
-
         }
 
         //export the DB manager to the view-session (JSPs)
 
-        session.setAttribute("manager", manager);           
+                 
 
     }   
 
