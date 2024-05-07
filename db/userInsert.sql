@@ -1,6 +1,6 @@
 INSERT INTO APP.USERS VALUES
-('john@mail.com', 'John', '123', 'Male', 'green'),
-('jeff@mail.com', 'jeff', '123', 'Male', 'red'),
-('sally@mail.com', 'sally', '123', 'Female', 'orange'),
-('penelope@mail.com', 'penelope', '123', 'Female', 'blue'),
-('alex@mail.com', 'alex', '123', 'Male', 'purple');
+('john123@mail.com', 'John', '12345', 'Male', 'green'),
+('jeff123@mail.com', 'jeff', '12345', 'Male', 'red'),
+('sally123@mail.com', 'sally', '12345', 'Female', 'orange'),
+('penelope123@mail.com', 'penelope', '12345', 'Female', 'blue'),
+('alex123@mail.com', 'alex', '12345', 'Male', 'purple');

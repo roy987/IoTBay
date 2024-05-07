@@ -51,6 +51,16 @@
     </head>
     
     <body>
+            <%-- Check for errors in session and display them --%>
+        <% if (session.getAttribute("emailErr") != null) { %>
+            <p><%= session.getAttribute("emailErr") %></p>
+        <% } %>
+        <% if (session.getAttribute("passwordErr") != null) { %>
+            <p><%= session.getAttribute("passwordErr") %></p>
+        <% } %>
+        <% if (session.getAttribute("userErr") != null) { %>
+            <p><%= session.getAttribute("userErr") %></p>
+        <% } %>
         <!-- Header section for the login page -->
         <div class="header">
             <div class="title">Login</div>

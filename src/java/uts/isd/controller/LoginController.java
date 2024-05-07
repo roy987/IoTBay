@@ -39,25 +39,32 @@ public class LoginController extends HttpServlet {
               Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);       
         }
 
-        if (validator.validateEmail(email)) {           
+        
+        System.out.println("VALIDATE");
+        System.out.println(email);
+        System.out.println(validator.validateEmail(email));
+        if (validator.validateEmail(email) == false) {           
             //8-set incorrect email error to the session           
             session.setAttribute("emailErr", "Invalid email");
             //9- redirect user back to the login.jsp  
             response.sendRedirect("login.jsp");
-        } else if (validator.validatePassword(password)) {                  
+        } else if (validator.validatePassword(password) == false) {                  
             //11-set incorrect password error to the session           
             session.setAttribute("passwordErr", "Invalid password");
             //12- redirect user back to the login.jsp
             response.sendRedirect("login.jsp");
         } else if (user != null) {                     
-            //13-save the logged in user object to the session           
+            //13-save the logged in user object to the session     
+            System.out.println("LOGIN SUCCESS");
             session.setAttribute("user", user);
             //14- redirect user to the main.jsp 
             response.sendRedirect("main.jsp");
         } else {                       
-            //15-set user does not exist error to the session           
+            //15-set user does not exist error to the session  
+            System.out.println("LOGIN FAIL");
+            System.out.println(user);
             session.setAttribute("userErr", "User does not exist, incorrect username or password");
-            //16- redirect user back to the login.jsp    
+            //16- redirect user back to the login.jsp   
             response.sendRedirect("login.jsp");
         }
     }

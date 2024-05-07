@@ -1,9 +1,9 @@
 CREATE TABLE Users(
-    user_email varchar(50), 
-    user_name varchar(50),
-    user_password varchar(50),
-    user_gender varchar(10),
-    user_fav_colour varchar(50),
+    email varchar(50), 
+    name varchar(50),
+    password varchar(50),
+    gender varchar(10),
+    fav_col varchar(50),
 
-    CONSTRAINT user_pk PRIMARY KEY (user_email)
+    CONSTRAINT user_pk PRIMARY KEY (email)
 );

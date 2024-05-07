@@ -10,8 +10,7 @@ public class Validator implements Serializable{
    private String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";       
    private String passwordPattern = "[a-z0-9]{4,}";       
               
-   public Validator(){    }       
-
+   public Validator() {}       
 
    public boolean validate(String pattern, String input){       
       Pattern regEx = Pattern.compile(pattern);       
@@ -22,13 +21,11 @@ public class Validator implements Serializable{
    }       
 
  
-
    public boolean checkEmpty(String email, String password){       
 
       return  email.isEmpty() || password.isEmpty();   
 
    }
-
    
    public boolean validateEmail(String email){                       
 

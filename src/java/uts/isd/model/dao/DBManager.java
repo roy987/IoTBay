@@ -18,24 +18,25 @@ public class DBManager {
 
     // Find user by email and password in the database
     public User findUser(String email, String password) throws SQLException {
-        String query = "SELECT * FROM users WHERE email = '" + email + "' AND password = '" + password + "'";
+        String query = "SELECT * FROM USERS WHERE email = '" + email + "' AND password = '" + password + "'";
         ResultSet rs = st.executeQuery(query);
+        
         if (rs.next()) {
-            User user = new User(rs.getString("email"), rs.getString("name"), rs.getString("password"), rs.getString("gender"), rs.getString("favcol"));
+            User user = new User(rs.getString("email"), rs.getString("name"), rs.getString("password"), rs.getString("gender"), rs.getString("fav_col"));
             return user;
         }
         return null;
     }
 
     // Add a user-data into the database
-    public void addUser(String email, String name, String password, String gender, String favcol) throws SQLException {
-        String query = "INSERT INTO users (email, name, password, gender, favcol) VALUES ('" + email + "', '" + name + "', '" + password + "', '" + gender + "', '" + favcol + "')";
+    public void addUser(String email, String name, String password, String gender, String fav_col) throws SQLException {
+        String query = "INSERT INTO users (email, name, password, gender, fav_col) VALUES ('" + email + "', '" + name + "', '" + password + "', '" + gender + "', '" + fav_col + "')";
         st.executeUpdate(query);
     }
 
     // Update a user details in the database
-    public void updateUser(String email, String name, String password, String gender, String favcol) throws SQLException {
-        String query = "UPDATE users SET name = '" + name + "', password = '" + password + "', gender = '" + gender + "', favcol = '" + favcol + "' WHERE email = '" + email + "'";
+    public void updateUser(String email, String name, String password, String gender, String fav_col) throws SQLException {
+        String query = "UPDATE users SET name = '" + name + "', password = '" + password + "', gender = '" + gender + "', fav_col = '" + fav_col + "' WHERE email = '" + email + "'";
         st.executeUpdate(query);
     }
 
