@@ -1,12 +1,13 @@
 <%-- 
-    Document   : main
-    Created on : 29 Mar 2024, 3:58:04 pm
-    Author     : Roy
+    Document   : manageUser
+    Created on : 9 May 2024, 10:42:20 am
+    Author     : jakesolsky
 --%>
 
 <%@ page import="uts.isd.model.User" %>
 <%@ page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page session="true" %>
+<!DOCTYPE html>
 
 <%
     // Retrieve the user object from the session
@@ -14,6 +15,7 @@
     
     // Initialize variables to store user details
     String email = "";
+    String name = "";
     String password = "";
     String gender = "";
     String fav_col = "";
@@ -21,18 +23,18 @@
     // Populate user details if user object exists
     if (user != null) {
         email = user.getEmail();
+        name = user.getName();
         password = user.getPassword();
         gender = user.getGender();
         fav_col = user.getFavouriteColour();
     }
 %>  
 
-<!DOCTYPE html>
 <html>
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Main Page</title>
-    <!-- Styling for the main page -->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Edit registration</title>
+    <!-- Styling for the manageUser page -->
     <style>
         .page {
             background-color:#FAF9F6;
@@ -45,9 +47,10 @@
             text-align:center;
             justify-content:space-between;
         }
-        .pageLink {
-            text-align: start;
-            align-items: end;
+        .logout {
+            text-align: center;
+            display:flex;
+            align-items:end;
         }
         .title {
             font-weight: bold;
@@ -77,35 +80,32 @@
             opacity:0.5;
             height:10%;
         }
+        .emailInput {
+            background-color: #f2f2f2; 
+        }
     </style>
-</head>
-<body class="page">
-    <!-- Header section with IoTBay title and logout link -->
-    <div class="header">
-        <div class="title">IoTBay</div>
-        <div class="pageLink">
-            <p>logged in as <%= email %></p>
-            <a href="logout.jsp">Logout</a><br>
-            <a href="manageUser.jsp">Manage User</a>  
+    </head>
+    <body>
+        <!-- Header section for the registration page -->
+        <div class="header">
+            <div class="title">Manage User</div>
         </div>
-    </div>
-    
-    <!-- Main content section -->
-    <div class="pageContent">
+        
+        <!-- Registration form section -->
         <div class="details">
-            <p>Hi <%= user.getName() %>! Here's a bit about yourself,</p>
-            <!-- Display user information in a styled container -->
-            <div class="infoItems">
-                Your email is <%= email %> <br><br>
-                Your password is <%= password %><br><br>
-                Your gender is <%= gender %><br><br>
-                Your favourite colour is <%= fav_col %>
-            </div>
+            <form action="ManageUserController" method="POST">
+                <label>Email: </label>
+                <input class="emailInput" name="email" value=<%= email %> readonly></input><br><br>
+                <label>Name: </label>
+                <input name="name" value=<%=name%>></input><br><br>
+                <label>Password: </label>
+                <input name="password" type="password" value=<%=password%>></input><br><br>
+                <label>Gender: </label>
+                <input name="gender" value=<%=gender%>></input><br><br>
+                <label>Favorite Color: </label>
+                <input name="fav_col" value=<%=fav_col%>></input><br><br>
+                <input type="submit" value="Change details">
+            </form>
         </div>
-        <!-- Image section at the bottom of the page -->
-        <div class="imageSection">
-            <img class="image" src="Resources/new-footer-image.png" alt="Image at bottom of main page">
-        </div>
-    </div>
-</body>
+    </body>
 </html>

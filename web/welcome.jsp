@@ -12,35 +12,26 @@
 <%@ page import="java.io.Serializable" %>
 
 <!DOCTYPE html>
-
 <%
-    // Retrieve user registration parameters from request
-    String name = request.getParameter("name");
-    String email = request.getParameter("email");
-    String password = request.getParameter("password");
-    String gender = request.getParameter("gender");
-    String favcol = request.getParameter("favcol");
-    boolean tos = request.getParameter("tos") != null && "on".equals(request.getParameter("tos"));
+    // Retrieve the user object from the session
+    User user = (User) session.getAttribute("user");
     
-    // Create a new User instance with the provided information
-    User user = new User(email, name, password, gender, favcol);
-
-    // Retrieve or create a session and user list
-    HttpSession userSession = request.getSession();
-    List<User> userList = (List<User>) userSession.getAttribute("userList");
+    // Initialize variables to store user details
+    String email = "";
+    String name = "";
+    String password = "";
+    String gender = "";
+    String fav_col = "";
     
-    // If the user list is null (first session access), create a new list
-    if (userList == null) {
-        userList = new ArrayList<>();
+    // Populate user details if user object exists
+    if (user != null) {
+        email = user.getEmail();
+        name = user.getName();
+        password = user.getPassword();
+        gender = user.getGender();
+        fav_col = user.getFavouriteColour();
     }
-    
-    // Add the new User instance to the user list
-    userList.add(user);
-    
-    // Store the updated user list and the current user in session attributes
-    userSession.setAttribute("userList", userList);
-    userSession.setAttribute("user", user);
-%>
+%>  
 
 <html>
     <head>
@@ -75,7 +66,6 @@
         </style>
     </head>
     <body>
-        <% if (tos) { %>
         <!-- Display welcome message and user details if terms of service are accepted -->
         <div class="header">
             <div class="title">Welcome Page</div>
@@ -85,19 +75,13 @@
             <p>Your Email is <%= email%></p>
             <p>Your password is <%= password%></p>
             <p>Your gender is <%= gender%></p>
-            <p>Your favourite colour is <%= favcol%></p>
+            <p>Your favourite colour is <%= fav_col%></p>
         
             <br>
             <div class="next">
                 <p>Click <a href="main.jsp">here</a> to proceed to the main page.</p>
             </div>
         </div>
-        <% } else { %>
-        <!-- Display error message if terms of service are not accepted -->
-        <p>Sorry, you must agree to the Terms of Service.</p>
-        <br>
-        <a href="./register.jsp">Click here to go back</a>
-        <% } %>
     </body>
 </html>
 

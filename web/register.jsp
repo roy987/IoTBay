@@ -57,7 +57,7 @@
         
         <!-- Registration form section -->
         <div class="details">
-            <form action="./welcome.jsp" method="POST">
+            <form action="RegistrationController" method="POST">
                 <label>Email: </label>
                 <input name="email"></input><br><br>
                 <label>Name: </label>
@@ -67,7 +67,7 @@
                 <label>Gender: </label>
                 <input name="gender"></input><br><br>
                 <label>Favorite Color: </label>
-                <input name="favcol"></input><br><br>
+                <input name="fav_col"></input><br><br>
                 <label class="terms-label">Terms And Conditions: </label>
                 <input type="checkbox" name="tos"></input><br><br>
                 
