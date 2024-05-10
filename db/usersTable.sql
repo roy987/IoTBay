@@ -4,6 +4,7 @@ CREATE TABLE Users(
     password varchar(50),
     gender varchar(10),
     fav_col varchar(50),
+    customer varchar(1),
 
     CONSTRAINT user_pk PRIMARY KEY (email)
 );

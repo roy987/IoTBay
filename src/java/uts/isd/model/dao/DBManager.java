@@ -22,7 +22,7 @@ public class DBManager {
         ResultSet rs = st.executeQuery(query);
         
         if (rs.next()) {
-            User user = new User(rs.getString("email"), rs.getString("name"), rs.getString("password"), rs.getString("gender"), rs.getString("fav_col"));
+            User user = new User(rs.getString("email"), rs.getString("name"), rs.getString("password"), rs.getString("gender"), rs.getString("fav_col"), rs.getString("customer"));
             return user;
         }
         return null;

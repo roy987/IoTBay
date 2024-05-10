@@ -18,20 +18,26 @@ public class User implements Serializable {
     private String password;
     private String gender;
     private String favouriteColour;
+    private String customer;
     
     public User() {
     }
 
-    public User(String email, String name, String password, String gender, String favouriteColour) {
+    public User(String email, String name, String password, String gender, String favouriteColour, String customer) {
         this.email = email;
         this.name = name;
         this.password = password;
         this.gender = gender;
         this.favouriteColour = favouriteColour;
+        this.customer = customer;
     }
    // Getter and Setter methods for email
     public String getEmail() {
         return email;
+    }
+    
+    public String getCustomer() {
+        return customer;
     }
 
     public void setEmail(String email) {
@@ -83,6 +89,7 @@ public class User implements Serializable {
                 ", password='" + password + '\'' +
                 ", gender='" + gender + '\'' +
                 ", favouriteColour='" + favouriteColour + '\'' +
+                ", customer='" + customer + '\'' +
                 '}';
     }
     

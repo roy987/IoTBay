@@ -20,7 +20,7 @@ import uts.isd.model.dao.DBManager;
  *
  * @author jakesolsky
  */
-public class ManageUserController extends HttpServlet {
+public class RegistrationStaffController extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
@@ -34,29 +34,38 @@ public class ManageUserController extends HttpServlet {
         String name = request.getParameter("name");
         String fav_col = request.getParameter("fav_col");
         String gender = request.getParameter("gender");
-        String customer = request.getParameter("customer");
+        String tos = request.getParameter("tos");
         
         //5- retrieve the manager instance from session      
         DBManager manager = (DBManager) session.getAttribute("manager");
         System.out.println("manager :" + manager);
-        User user = (User) session.getAttribute("user");     
+        System.out.println("tos :" + tos);
+        User user = null;     
         
+        boolean email_val = validator.validateEmail(email);
         boolean password_val = validator.validatePassword(password);
-        System.out.print("User update attempt!");
-        if (password_val == false) {
-            
+        
+        if (email_val == false | password_val == false | tos == null) {
             System.out.print("Invalid");
-            response.sendRedirect("manageUser.jsp");
+            response.sendRedirect("register.jsp");
         } 
         else {
             try {
-                manager.updateUser(email, name, password, gender, fav_col);
-                System.out.println("USER UPDATED");
-            } catch (SQLException ex) {
-                Logger.getLogger(ManageUserController.class.getName()).log(Level.SEVERE, null, ex);
+            //6- find user by email and password
+                user = manager.findUser(email, password);
+            } catch (SQLException ex) {           
+              Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);       
             }
-            session.setAttribute("user", new User(email, name, password, gender, fav_col, customer));
-            response.sendRedirect("main.jsp");
+
+            if (user == null) {
+                try {
+                    manager.addUser(email, name, password, gender, fav_col);
+                } catch (SQLException ex) {
+                    Logger.getLogger(RegistrationCustomerController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            session.setAttribute("user", new User(email, name, password, gender, fav_col, "0"));
+            response.sendRedirect("welcome.jsp");
         }  
     }
 

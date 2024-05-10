@@ -73,7 +73,8 @@
             <div class="login">
                 <p>You are not logged in</p>
                 <a href="login.jsp">Login</a> <br>
-                <a href="register.jsp">Register</a>
+                <a href="registerStaff.jsp">Register Staff</a>
+                <a href="registerCustomer.jsp">Register Customer</a>
             </div>
        </div>
 

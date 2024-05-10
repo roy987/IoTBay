@@ -17,6 +17,8 @@
     String password = "";
     String gender = "";
     String fav_col = "";
+    String customer = "";
+    String text_message = "";
     
     // Populate user details if user object exists
     if (user != null) {
@@ -24,6 +26,14 @@
         password = user.getPassword();
         gender = user.getGender();
         fav_col = user.getFavouriteColour();
+        customer = user.getCustomer();
+        
+        if (customer == "1") {
+            text_message = "you are a customer";
+        }
+        else {
+            text_message = "you are a staff member";
+        } 
     }
 %>  
 
@@ -96,6 +106,7 @@
             <p>Hi <%= user.getName() %>! Here's a bit about yourself,</p>
             <!-- Display user information in a styled container -->
             <div class="infoItems">
+                <%= text_message %> <br><br>
                 Your email is <%= email %> <br><br>
                 Your password is <%= password %><br><br>
                 Your gender is <%= gender %><br><br>

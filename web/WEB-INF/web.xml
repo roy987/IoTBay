@@ -11,7 +11,7 @@
     </servlet>
     <servlet>
         <servlet-name>RegistrationController</servlet-name>
-        <servlet-class>uts.isd.controller.RegistrationController</servlet-class>
+        <servlet-class>uts.isd.controller.RegistrationStaffController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ManageUserController</servlet-name>
