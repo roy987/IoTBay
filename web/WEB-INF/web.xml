@@ -11,7 +11,15 @@
     </servlet>
     <servlet>
         <servlet-name>RegistrationController</servlet-name>
-        <servlet-class>uts.isd.controller.RegistrationStaffController</servlet-class>
+        <servlet-class>uts.isd.controller.RegistrationController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterCustomerController</servlet-name>
+        <servlet-class>uts.isd.controller.RegisterCustomerController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RegisterStaffController</servlet-name>
+        <servlet-class>uts.isd.controller.RegisterStaffController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>ManageUserController</servlet-name>
@@ -26,8 +34,12 @@
         <url-pattern>/LoginController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>RegistrationController</servlet-name>
-        <url-pattern>/RegistrationController</url-pattern>
+        <servlet-name>RegisterCustomerController</servlet-name>
+        <url-pattern>/RegisterCustomerController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterStaffController</servlet-name>
+        <url-pattern>/RegisterStaffController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ManageUserController</servlet-name>

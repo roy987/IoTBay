@@ -57,7 +57,7 @@
         
         <!-- Registration form section -->
         <div class="details">
-            <form action="RegistrationStaffController" method="POST">
+            <form action="RegisterStaffController" method="POST">
                 <label>Email: </label>
                 <input name="email"></input><br><br>
                 <label>Name: </label>

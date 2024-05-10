@@ -20,7 +20,7 @@ import uts.isd.model.dao.DBManager;
  *
  * @author jakesolsky
  */
-public class RegistrationStaffController extends HttpServlet {
+public class RegisterCustomerController extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
@@ -61,10 +61,10 @@ public class RegistrationStaffController extends HttpServlet {
                 try {
                     manager.addUser(email, name, password, gender, fav_col);
                 } catch (SQLException ex) {
-                    Logger.getLogger(RegistrationCustomerController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(RegisterCustomerController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            session.setAttribute("user", new User(email, name, password, gender, fav_col, "0"));
+            session.setAttribute("user", new User(email, name, password, gender, fav_col, "1"));
             response.sendRedirect("welcome.jsp");
         }  
     }
