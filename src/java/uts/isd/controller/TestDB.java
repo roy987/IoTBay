@@ -49,7 +49,11 @@ System.out.print("User favorite color: ");
 
 String favcol = in.nextLine();
 
-db.addUser( email, name, password, gender, favcol);
+System.out.print("Customer Status: ");
+
+String customer = in.nextLine();
+
+db.addUser( email, name, password, gender, favcol, customer);
 
 System.out.println("User is added to the database.");
 

@@ -29,8 +29,8 @@ public class DBManager {
     }
 
     // Add a user-data into the database
-    public void addUser(String email, String name, String password, String gender, String fav_col) throws SQLException {
-        String query = "INSERT INTO users (email, name, password, gender, fav_col) VALUES ('" + email + "', '" + name + "', '" + password + "', '" + gender + "', '" + fav_col + "')";
+    public void addUser(String email, String name, String password, String gender, String fav_col, String customer) throws SQLException {
+        String query = "INSERT INTO users (email, name, password, gender, fav_col, customer) VALUES ('" + email + "', '" + name + "', '" + password + "', '" + gender + "', '" + fav_col + "', '" + customer + "')";
         st.executeUpdate(query);
     }
 

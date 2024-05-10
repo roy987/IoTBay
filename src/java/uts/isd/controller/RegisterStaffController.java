@@ -47,7 +47,7 @@ public class RegisterStaffController extends HttpServlet {
         
         if (email_val == false | password_val == false | tos == null) {
             System.out.print("Invalid");
-            response.sendRedirect("register.jsp");
+            response.sendRedirect("registerStaff.jsp");
         } 
         else {
             try {
@@ -59,7 +59,7 @@ public class RegisterStaffController extends HttpServlet {
 
             if (user == null) {
                 try {
-                    manager.addUser(email, name, password, gender, fav_col);
+                    manager.addUser(email, name, password, gender, fav_col, "0");
                 } catch (SQLException ex) {
                     Logger.getLogger(RegisterCustomerController.class.getName()).log(Level.SEVERE, null, ex);
                 }

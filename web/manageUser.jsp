@@ -83,6 +83,11 @@
         .emailInput {
             background-color: #f2f2f2; 
         }
+        .deleteButton {
+            background-color: red;
+            color: white;
+            cursor: pointer;
+        }
     </style>
     </head>
     <body>
@@ -106,6 +111,13 @@
                 <input name="fav_col" value=<%=fav_col%>></input><br><br>
                 <input type="submit" value="Change details">
             </form>
+            <br><br>
+            <form action="DeleteUserController" method="POST">
+                <input type="hidden" name="email" value="<%= email %>">
+                <input type="submit" value="Delete User" class="deleteButton">
+            </form>
         </div>
+                
+         
     </body>
 </html>
