@@ -60,6 +60,7 @@ public class RegisterStaffController extends HttpServlet {
             if (user == null) {
                 try {
                     manager.addUser(email, name, password, gender, fav_col, "0");
+                    manager.addLogRegister(email);
                 } catch (SQLException ex) {
                     Logger.getLogger(RegisterCustomerController.class.getName()).log(Level.SEVERE, null, ex);
                 }

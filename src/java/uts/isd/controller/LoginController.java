@@ -14,8 +14,6 @@ import jakarta.servlet.http.HttpSession;
 import uts.isd.model.User;
 import uts.isd.model.dao.DBManager;
 
- 
-
 public class LoginController extends HttpServlet {
     @Override   
 
@@ -35,6 +33,7 @@ public class LoginController extends HttpServlet {
         try {
             //6- find user by email and password
             user = manager.findUser(email, password);
+            manager.addLogLogin(email);
         } catch (SQLException ex) {           
               Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);       
         }
@@ -54,7 +53,7 @@ public class LoginController extends HttpServlet {
             //12- redirect user back to the login.jsp
             response.sendRedirect("login.jsp");
         } else if (user != null) {                     
-            //13-save the logged in user object to the session     
+            //13-save the logged in user object to the session 
             System.out.println("LOGIN SUCCESS");
             session.setAttribute("user", user);
             //14- redirect user to the main.jsp 

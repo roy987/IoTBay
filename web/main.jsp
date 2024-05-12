@@ -95,8 +95,10 @@
         <div class="title">IoTBay</div>
         <div class="pageLink">
             <p>logged in as <%= email %></p>
-            <a href="logout.jsp">Logout</a><br>
-            <a href="manageUser.jsp">Manage User</a>  
+            <a href="LogoutController">Logout</a><br>
+            <a href="manageUser.jsp">Manage User</a><br>
+            <!--<a href="logs.jsp">View user logs</a>-->  
+            <a href="UserLogsController">View user logs</a>  
         </div>
     </div>
     
