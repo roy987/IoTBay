@@ -8,53 +8,64 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <!-- Styling for the registration page -->
-    <style>
-        .title {
-            font-weight: bold;
-            font-size: 60px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-        }
-        .header {
-            padding: 30px;
-            background-color: lightblue;
-            border-radius: 10px; 
-            display: flex;
-            text-align: center;
-            justify-content: space-between;
-        }
-        .details {
-            margin-top: 50px;
-            font-size: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: left; 
-        }
-        label {
-            width: 150px; 
-            display: inline-block;
-        }
-        .terms-label {
-            width: auto; 
-            white-space: nowrap; 
-            margin-right: 10px; 
-        }
-    </style>
-    
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Register Page</title>
+        <title>Register staff</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            .title {
+                font-weight: bold;
+                font-size: 40px;
+                text-align: center;
+                display: flex;
+                align-items: center;
+            }
+            .details {
+                margin-top: 50px;
+                font-size: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: left; 
+            }
+            label {
+                width: 150px; 
+                display: inline-block;
+            }
+            .terms-label {
+                width: auto; 
+                white-space: nowrap; 
+                margin-right: 10px; 
+            }
+        </style>
     </head>
     
     <body>
         <!-- Header section for the registration page -->
         <div class="header">
-            <div class="title">Register</div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <a class="navbar-brand" href="./main.jsp">IoTBay</a>
+                <div class="d-flex justify-content-between w-100">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item ">
+                                <a class="nav-link" href="login.jsp">Login </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="registerStaff.jsp">Register (Staff)</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="registerCustomer.jsp">Resister (Customer)</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
         </div>
-        
+        <div class="title">Resister (Staff)</div>
         <!-- Registration form section -->
         <div class="details">
             <form action="RegisterStaffController" method="POST">

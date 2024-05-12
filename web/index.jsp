@@ -15,73 +15,48 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Index Page</title>
+    <title>Index</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        /* Styling for the page */
-        .page {
-            background-color: #FAF9F6;
-        }
-        .header {
+        .navbar{
             padding: 20px;
-            background-color: lightblue;
-            border-radius: 10px; 
-            display: flex;
-            text-align: center;
-            justify-content: space-between;
         }
-        .login {
-            text-align: start;
-            align-items: end;
+        .navbar-brand{
+            font-size: 30px;
         }
-        .title {
-            font-weight: bold;
-            font-size: 60px;
-            text-align: center;
-            display: flex;
-            align-items: center;
+        .content{
+            padding: 15px;
         }
-        .details {
-            margin-top: 20px;
-            font-size: 20px;
-            font-style: italic;
-        }
-        .pageList {
-            margin-left: 20px;
-            }
-            .pageContent {
-            padding:30px;
-            padding-top:15px;
-            }
-
-            .imageSection{
-            display:flex;
-            justify-content:center;
-            margin-top:6%;            
-            }
-            .image {
-            border-radius:20px;
-            width:90%;
-            opacity:0.5;
-            height:10%;
-          
-            }
-        </style>
+    </style>
     </head>
     <body class="page">
        <div class="header">
-            <div class="title">IoTBay</div>
-            <div class="login">
-                <p>You are not logged in</p>
-                <a href="login.jsp">Login</a> <br>
-                <a href="registerStaff.jsp">Register Staff</a> <br>
-                <a href="registerCustomer.jsp">Register Customer</a>
-            </div>
-       </div>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <a class="navbar-brand" href="./main.jsp">IoTBay</a>
+                <div class="d-flex justify-content-between w-100">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item ">
+                                <a class="nav-link" href="login.jsp">Login </a>
+                        </li>
 
-        <div class="imageSection">
-            <img class="image" src="Resources/new-footer-image.png" alt="Image at bottom of main page">
-        </div>
-    </div>
+                        <li class="nav-item">
+                            <a class="nav-link" href="registerStaff.jsp">Register (Staff)</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="registerCustomer.jsp">Resister (Customer)</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+           <div class="content">
+                <h1 >Welcome!</h1>
+                <p>You are not currently logged in</p> 
+           </div>
+       </div>
     
     <jsp:include page="/ConnServlet" flush="true" />
 </body>

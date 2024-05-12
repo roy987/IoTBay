@@ -41,69 +41,66 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Main Page</title>
-    <!-- Styling for the main page -->
+    <title>Main</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .page {
-            background-color:#FAF9F6;
-        }
-        .header {
-            padding:20px;
-            background-color: <%= fav_col %>; /* Set header background color based on user's favorite color */
-            border-radius: 10px; 
-            display:flex;
-            text-align:center;
-            justify-content:space-between;
-        }
-        .pageLink {
-            text-align: start;
-            align-items: end;
-        }
         .title {
             font-weight: bold;
-            font-size:60px;
+            font-size: 40px;
+            text-align: center;
+            display: flex;
+            align-items: center;
         }
         .details {
-            margin-top: 20px;
-            font-size:25px;
+            margin-top: 50px;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: left; 
         }
-        .infoItems {           
-            text-align:center;
-            align-items:center;  
-            background-color: <%= fav_col %>; /* Set section background color based on user's favorite color */
-            margin-left:30%;
-            margin-right:30%;
-            border-radius:20px;
-            padding:20px;
+        label {
+            width: 150px; 
+            display: inline-block;
         }
-        .imageSection{
-            display:flex;
-            justify-content:center;
-            margin-top:6%;
+        .terms-label {
+            width: auto; 
+            white-space: nowrap; 
+            margin-right: 10px; 
         }
-        .image {
-            border-radius:20px;
-            width:90%;
-            opacity:0.5;
-            height:10%;
+        .content{
+            padding: 15px;
         }
     </style>
 </head>
-<body class="page">
+<body>
     <!-- Header section with IoTBay title and logout link -->
     <div class="header">
-        <div class="title">IoTBay</div>
-        <div class="pageLink">
-            <p>logged in as <%= email %></p>
-            <a href="LogoutController">Logout</a><br>
-            <a href="manageUser.jsp">Manage User</a><br>
-            <!--<a href="logs.jsp">View user logs</a>-->  
-            <a href="UserLogsController">View user logs</a>  
-        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="./main.jsp">IoTBay</a>
+            <div class="d-flex justify-content-between w-100">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ">
+                            <a class="nav-link" href="LogoutController">Logout </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="manageUser.jsp">Manage User</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="UserLogsController">View Logs</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     </div>
-    
+    <div class="title">Welcome!</div>
     <!-- Main content section -->
-    <div class="pageContent">
+    <div class="content">
         <div class="details">
             <p>Hi <%= user.getName() %>! Here's a bit about yourself,</p>
             <!-- Display user information in a styled container -->
@@ -112,13 +109,9 @@
                 Your email is <%= email %> <br><br>
                 Your password is <%= password %><br><br>
                 Your gender is <%= gender %><br><br>
-                Your favourite colour is <%= fav_col %>
             </div>
         </div>
-        <!-- Image section at the bottom of the page -->
-        <div class="imageSection">
-            <img class="image" src="Resources/new-footer-image.png" alt="Image at bottom of main page">
-        </div>
     </div>
+          
 </body>
 </html>

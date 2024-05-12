@@ -19,7 +19,6 @@ import uts.isd.model.dao.DBManager;
  
 
 public class UserLogsController extends HttpServlet {
-    
     @Override   
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Check if the user is logged in

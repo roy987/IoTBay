@@ -16,7 +16,6 @@ import uts.isd.model.dao.DBManager;
 
 public class LoginController extends HttpServlet {
     @Override   
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response)   throws ServletException, IOException {       
         //1- retrieve the current session
         HttpSession session = request.getSession();

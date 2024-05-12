@@ -32,53 +32,33 @@
 
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>Edit registration</title>
-    <!-- Styling for the manageUser page -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Main</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .page {
-            background-color:#FAF9F6;
-        }
-        .header {
-            padding:20px;
-            background-color: <%= fav_col %>; /* Set header background color based on user's favorite color */
-            border-radius: 10px; 
-            display:flex;
-            text-align:center;
-            justify-content:space-between;
-        }
-        .logout {
-            text-align: center;
-            display:flex;
-            align-items:end;
-        }
         .title {
             font-weight: bold;
-            font-size:60px;
+            font-size: 40px;
+            text-align: center;
+            display: flex;
+            align-items: center;
         }
         .details {
-            margin-top: 20px;
-            font-size:25px;
+            margin-top: 50px;
+            font-size: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: left; 
         }
-        .infoItems {           
-            text-align:center;
-            align-items:center;  
-            background-color: <%= fav_col %>; /* Set section background color based on user's favorite color */
-            margin-left:30%;
-            margin-right:30%;
-            border-radius:20px;
-            padding:20px;
+        label {
+            width: 150px; 
+            display: inline-block;
         }
-        .imageSection{
-            display:flex;
-            justify-content:center;
-            margin-top:6%;
-        }
-        .image {
-            border-radius:20px;
-            width:90%;
-            opacity:0.5;
-            height:10%;
+        .terms-label {
+            width: auto; 
+            white-space: nowrap; 
+            margin-right: 10px; 
         }
         .emailInput {
             background-color: #f2f2f2; 
@@ -87,37 +67,57 @@
             background-color: red;
             color: white;
             cursor: pointer;
+            display: block;
+            float: left; /* or you can use display: inline-block; */
         }
     </style>
-    </head>
-    <body>
-        <!-- Header section for the registration page -->
-        <div class="header">
-            <div class="title">Manage User</div>
-        </div>
-        
-        <!-- Registration form section -->
-        <div class="details">
-            <form action="ManageUserController" method="POST">
-                <label>Email: </label>
-                <input class="emailInput" name="email" value=<%= email %> readonly></input><br><br>
-                <label>Name: </label>
-                <input name="name" value=<%=name%>></input><br><br>
-                <label>Password: </label>
-                <input name="password" type="password" value=<%=password%>></input><br><br>
-                <label>Gender: </label>
-                <input name="gender" value=<%=gender%>></input><br><br>
-                <label>Favorite Color: </label>
-                <input name="fav_col" value=<%=fav_col%>></input><br><br>
-                <input type="submit" value="Change details">
-            </form>
-            <br><br>
-            <form action="DeleteUserController" method="POST">
-                <input type="hidden" name="email" value="<%= email %>">
-                <input type="submit" value="Delete User" class="deleteButton">
-            </form>
-        </div>
-                
-         
-    </body>
+</head>
+<body>
+    <!-- Header section for the registration page -->
+    <div class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="./main.jsp">IoTBay</a>
+            <div class="d-flex justify-content-between w-100">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ">
+                            <a class="nav-link" href="LogoutController">Logout </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="manageUser.jsp">Manage User</a>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="UserLogsController">View Logs</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+    <div class="title">Manage User Details</div>
+    <!-- Registration form section -->
+    <div class="details">
+        <form action="ManageUserController" method="POST">
+            <label>Email: </label>
+            <input class="emailInput" name="email" value=<%= email %> readonly></input><br><br>
+            <label>Name: </label>
+            <input name="name" value=<%=name%>></input><br><br>
+            <label>Password: </label>
+            <input name="password" type="password" value=<%=password%>></input><br><br>
+            <label>Gender: </label>
+            <input name="gender" value=<%=gender%>></input><br><br>
+            <label>Favorite Color: </label>
+            <input name="fav_col" value=<%=fav_col%>></input><br><br>
+            <input type="submit" value="Change details">
+        </form>
+        <br><br>
+        <form action="DeleteUserController" method="POST">
+            <input type="hidden" name="email" value="<%= email %>">
+            <input type="submit" value="Delete User" class="deleteButton">
+        </form>
+    </div>
+</body>
 </html>
