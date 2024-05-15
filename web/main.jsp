@@ -88,7 +88,8 @@
                         <a class="nav-link" href="manageUser.jsp">Manage User</a>
                     </li>
 
-                    <li class="nav-item dropdown">
+                    <li class="nav-item">
+                        <a class="nav-link" href="orders.jsp">Orders</a>
                     </li>
 
                     <li class="nav-item">
