@@ -17,16 +17,14 @@
     String email = "";
     String name = "";
     String password = "";
-    String gender = "";
-    String fav_col = "";
+    String phone = "";
     
     // Populate user details if user object exists
     if (user != null) {
         email = user.getEmail();
         name = user.getName();
         password = user.getPassword();
-        gender = user.getGender();
-        fav_col = user.getFavouriteColour();
+        phone = user.getPhone();
     }
 %>  
 
@@ -107,10 +105,8 @@
             <input name="name" value=<%=name%>></input><br><br>
             <label>Password: </label>
             <input name="password" type="password" value=<%=password%>></input><br><br>
-            <label>Gender: </label>
-            <input name="gender" value=<%=gender%>></input><br><br>
-            <label>Favorite Color: </label>
-            <input name="fav_col" value=<%=fav_col%>></input><br><br>
+            <label>Phone Number: </label>
+            <input name="phone" value=<%=phone%>></input><br><br>
             <input type="submit" value="Change details">
         </form>
         <br><br>

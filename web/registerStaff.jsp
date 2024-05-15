@@ -75,10 +75,8 @@
                 <input name="name"></input><br><br>
                 <label>Password: </label>
                 <input name="password" type="password"></input><br><br>
-                <label>Gender: </label>
-                <input name="gender"></input><br><br>
-                <label>Favorite Color: </label>
-                <input name="fav_col"></input><br><br>
+                <label>Phone Number: </label>
+                <input name="phone"></input><br><br>
                 <label class="terms-label">Terms And Conditions: </label>
                 <input type="checkbox" name="tos"></input><br><br>
                 
