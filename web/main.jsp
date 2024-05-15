@@ -87,6 +87,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="manageUser.jsp">Manage User</a>
                     </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="shippingMain.jsp">Shipping</a>
+                    </li>   
 
                     <li class="nav-item dropdown">
                     </li>
@@ -94,6 +98,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="UserLogsController">View Logs</a>
                     </li>
+                    
                 </ul>
             </div>
         </nav>
