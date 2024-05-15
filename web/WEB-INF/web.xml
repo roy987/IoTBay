@@ -17,6 +17,10 @@
         <servlet-name>ManageUserController</servlet-name>
         <servlet-class>uts.isd.controller.ManageUserController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>java</servlet-name>
+        <servlet-class>OrderController.java</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -32,6 +36,10 @@
     <servlet-mapping>
         <servlet-name>ManageUserController</servlet-name>
         <url-pattern>/ManageUserController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>java</servlet-name>
+        <url-pattern>/java</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
