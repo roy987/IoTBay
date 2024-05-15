@@ -59,7 +59,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="registerCustomer.jsp">Resister (Customer)</a>
+                            <a class="nav-link" href="registerCustomer.jsp">Register (Customer)</a>
                         </li>
                     </ul>
                 </div>

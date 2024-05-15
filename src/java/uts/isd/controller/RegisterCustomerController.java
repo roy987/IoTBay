@@ -66,7 +66,7 @@ public class RegisterCustomerController extends HttpServlet {
                 }
             }
             session.setAttribute("user", new User(email, name, password, gender, fav_col, "1"));
-            response.sendRedirect("welcome.jsp");
+            response.sendRedirect("main.jsp");
         }  
     }
 
