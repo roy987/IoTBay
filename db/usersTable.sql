@@ -4,5 +4,5 @@ CREATE TABLE Users(
     password varchar(50),
     gender varchar(10),
     fav_col varchar(50),
-    customer varchar(1),
+    customer varchar(1)
 );
