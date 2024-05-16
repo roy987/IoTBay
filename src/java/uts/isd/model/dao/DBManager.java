@@ -119,4 +119,23 @@ public class DBManager {
         return null;
         
     }
+    
+    // Create payment details in the database
+    public void createPayment(String cardNumber, String cardName, String expiryDate, String cvv, String email) throws SQLException {
+        String query = "INSERT INTO paydetails (cardNumber, cardName, expiryDate, cvv, email) VALUES ('" + cardNumber + "', '" + cardName + "', '" + expiryDate + "', '" + cvv + "', '" + email + "')";
+        st.executeUpdate(query);
+    }
+
+    
+    // Update payment details in the database
+    public void updatePayment(String email, String cardNumber, String cardName, String expiryDate, String cvv) throws SQLException {
+        String query = "UPDATE paydetails SET cardName = '" + cardName + "', expiryDate = '" + expiryDate + "', cvv = '" + cvv + "' WHERE email = '" + email + "' AND cardNumber = '" + cardNumber + "'";
+        st.executeUpdate(query);
+    }
+
+    // Delete payment details from the database
+    public void deletePayment(String email, String cardNumber) throws SQLException {
+        String query = "DELETE FROM paydetails WHERE email = '" + email + "' AND cardNumber = '" + cardNumber + "'";
+        st.executeUpdate(query);
+    }
 }
