@@ -1,19 +1,14 @@
 <%-- 
-    Document   : login
-    Created on : 5 Apr 2024, 2:39:18 pm
-    Author     : jakesolsky
+    Document   : FindDevice
+    Created on : 15 May 2024, 2:10:36 pm
+    Author     : caitlinbaker
 --%>
 
-<%@ page import="uts.isd.model.User" %>
-<%@ page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login page</title>
-        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        <style>
+     <head>
+         <style>
             .title {
                 font-weight: bold;
                 font-size: 40px;
@@ -39,10 +34,12 @@
                 margin-right: 10px; 
             }
         </style>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title> Find Device </title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     </head>
-    
     <body>
-        <div class="header">
+    <div class="header">
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <a class="navbar-brand" href="./index.jsp">IoTBay</a>
                 <div class="d-flex justify-content-between w-100">
@@ -59,7 +56,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="registerCustomer.jsp">Register (Customer)</a>
+                            <a class="nav-link" href="registerCustomer.jsp">Resister (Customer)</a>
                         </li>
                         
                         <li class ="nav-item">
@@ -77,26 +74,15 @@
                 </div>
             </nav>
         </div>
-        <div class="content">
-                <%-- Check for errors in session and display them --%>
-            <% if (session.getAttribute("loginErr") != null) { %>
-                <p><%= session.getAttribute("loginErr") %></p>
-            <% } %>
-            
-            <div class="title">Login</div>
-
-            <!-- Form section for user login -->
-            <div class="details">
-                <form action="LoginController" method="post">
-                    <label>Email: </label>
-                        <input name="email"></input><br>
-                        <br>
-                    <label>Password: </label>
-                        <input name="password" type="password"></input><br>
-                        <br>
-                    <input type="submit" value="login">
-                <form/>
-            </div>
+    </body>     
+        <div class ="container my-3">
+            <p class="display-6">Find Device</p>
+            <form action="editDeviceController" method="POST">
+                <div class="form-group pb-4">
+                  <label for="deviceID">Device ID:</label>
+                  <input type="number" class="device-field" name="deviceID" placeholder="Enter Device ID">
+                </div>
+                <button type="submit" class="btn btn-primary ">Submit</button>
+            </form>
         </div>
-    </body>
 </html>
