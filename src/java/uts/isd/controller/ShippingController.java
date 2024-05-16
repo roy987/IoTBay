@@ -6,7 +6,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import uts.isd.model.shippingModel;  // Corrected import statement
+import uts.isd.model.ShippingModel;
 
 /**
  * ShippingController class to handle shipping related requests.
@@ -17,8 +17,9 @@ public class ShippingController extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("GET!");
         HttpSession session = request.getSession();
-        shippingModel shippingModel = (shippingModel) session.getAttribute("shippingModel");
+        ShippingModel shippingModel = (ShippingModel) session.getAttribute("shippingModel");
 
         if (shippingModel != null) {
             request.setAttribute("shippingModel", shippingModel);
@@ -31,19 +32,21 @@ public class ShippingController extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("POST!");
         HttpSession session = request.getSession();
 
         String address = request.getParameter("address");
         String method = request.getParameter("method");
         String date = request.getParameter("date");
 
-        session.setAttribute("shippingModel", new shippingModel(address, method, date));
-
+        ShippingModel shippingModel = new ShippingModel(address, method, date);
+        session.setAttribute("shippingModel", shippingModel);
         response.sendRedirect("shippingMain.jsp"); 
     }
     
     @Override
     protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        System.out.println("DELETE!");
         HttpSession session = request.getSession();
 
         // Remove the shippingDetails attribute from the session

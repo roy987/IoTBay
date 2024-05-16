@@ -67,14 +67,8 @@
         </div>
         <div class="content">
                 <%-- Check for errors in session and display them --%>
-            <% if (session.getAttribute("emailErr") != null) { %>
-                <p><%= session.getAttribute("emailErr") %></p>
-            <% } %>
-            <% if (session.getAttribute("passwordErr") != null) { %>
-                <p><%= session.getAttribute("passwordErr") %></p>
-            <% } %>
-            <% if (session.getAttribute("userErr") != null) { %>
-                <p><%= session.getAttribute("userErr") %></p>
+            <% if (session.getAttribute("loginErr") != null) { %>
+                <p><%= session.getAttribute("loginErr") %></p>
             <% } %>
             
             <div class="title">Login</div>

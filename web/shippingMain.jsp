@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ page import="uts.isd.model.shippingModel" %>
+<%@ page import="uts.isd.model.ShippingModel" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -91,7 +91,7 @@
     </div>
     <div class="shippingDisplay">
         <%
-            shippingModel shippingModel = (shippingModel) request.getAttribute("shippingDetails");
+            out.println("<p>Shipping Model " + shippingModel + "</p>");
             if (shippingModel != null) {
                 out.println("<p>Shipping Method: " + shippingModel.getMethod() + "</p>");
                 out.println("<p>Shipping Address: " + shippingModel.getAddress() + "</p>");

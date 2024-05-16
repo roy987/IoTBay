@@ -20,6 +20,7 @@
     String customer = "";
     String text_message = "";
     
+    
     // Populate user details if user object exists
     if (user != null) {
         name = user.getName();
@@ -28,12 +29,12 @@
         phone = user.getPhone();
         customer = user.getCustomer();
         
-        if (customer == "1") {
-            text_message = "you are a customer";
+        if (customer.strip().equals("1")) {
+           text_message = "you are a customer";
         }
         else {
-            text_message = "you are a staff member";
-        } 
+           text_message = "you are a staff member";
+        }  
     }
 %>  
 
