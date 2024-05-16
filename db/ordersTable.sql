@@ -5,8 +5,5 @@ CREATE TABLE orders (
     orderStatus VARCHAR(20),
     productID VARCHAR(20),
     paymentID VARCHAR(20),
-    deliveryID VARCHAR(20),
-    FOREIGN KEY (productID) REFERENCES products(productID),
-    FOREIGN KEY (paymentID) REFERENCES payments(paymentID),
-    FOREIGN KEY (deliveryID) REFERENCES deliveries(deliveryID)
+    deliveryID VARCHAR(20)
 );
