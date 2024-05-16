@@ -102,7 +102,6 @@
         <url-pattern>/LogoutController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-<<<<<<< HEAD
         <servlet-name>ViewProductsController</servlet-name>
         <url-pattern>/ViewProductsController</url-pattern>
     </servlet-mapping>
@@ -112,7 +111,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>StartOrderController</servlet-name>
-        <url-pattern>/StartOrderController</url-pattern>
+        <url-pattern>/StartOrderController</url
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CreateOrderController</servlet-name>
@@ -129,10 +128,10 @@
     <servlet-mapping>
         <servlet-name>LoadUpdateController</servlet-name>
         <url-pattern>/LoadUpdateController</url-pattern>
-=======
+    </servlet-mapping>
+    <servlet-mapping>
         <servlet-name>ShippingController</servlet-name>
         <url-pattern>/ShippingController</url-pattern>
->>>>>>> main
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
