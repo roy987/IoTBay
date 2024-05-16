@@ -65,6 +65,11 @@
                 </div>
             </nav>
         </div>
+        
+        <% if (session.getAttribute("registerErr") != null) { %>
+            <p><%= session.getAttribute("registerErr") %></p>
+        <% } %>
+            
         <div class="title">Resister (Staff)</div>
         <!-- Registration form section -->
         <div class="details">

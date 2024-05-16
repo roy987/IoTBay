@@ -43,11 +43,27 @@ public class RegisterCustomerController extends HttpServlet {
         
         boolean email_val = validator.validateEmail(email);
         boolean password_val = validator.validatePassword(password);
+        boolean name_val = validator.validateName(name);
+        boolean phone_val = validator.validatePhone(phone);
         
-        if (email_val == false | password_val == false | tos == null) {
-            System.out.print("Invalid");
+        if (email_val == false) {
+            session.setAttribute("registerErr", "Invalid email");
             response.sendRedirect("registerCustomer.jsp");
-        } 
+        } else if (name_val == false ) {
+            session.setAttribute("registerErr", "Invalid name");
+            response.sendRedirect("registerCustomer.jsp");
+        } else if (password_val == false ) {
+            session.setAttribute("registerErr", "Invalid password");
+            response.sendRedirect("registerCustomer.jsp");
+        } else if (phone_val == false ) {
+            session.setAttribute("registerErr", "Invalid phone number");
+            response.sendRedirect("registerCustomer.jsp");
+        } else if (tos == null) {
+            session.setAttribute("registerErr", "please accept the terms of service");
+            response.sendRedirect("registerCustomer.jsp");
+        }
+        
+        
         else {
             try {
             //6- find user by email and password

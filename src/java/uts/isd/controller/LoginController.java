@@ -43,12 +43,12 @@ public class LoginController extends HttpServlet {
         System.out.println(validator.validateEmail(email));
         if (validator.validateEmail(email) == false) {           
             //8-set incorrect email error to the session           
-            session.setAttribute("emailErr", "Invalid email");
+            session.setAttribute("loginErr", "Invalid email");
             //9- redirect user back to the login.jsp  
             response.sendRedirect("login.jsp");
         } else if (validator.validatePassword(password) == false) {                  
             //11-set incorrect password error to the session           
-            session.setAttribute("passwordErr", "Invalid password");
+            session.setAttribute("loginErr", "Invalid password");
             //12- redirect user back to the login.jsp
             response.sendRedirect("login.jsp");
         } else if (user != null) {                     
@@ -56,12 +56,13 @@ public class LoginController extends HttpServlet {
             System.out.println("LOGIN SUCCESS");
             session.setAttribute("user", user);
             //14- redirect user to the main.jsp 
+            session.setAttribute("loginErr", "");
             response.sendRedirect("main.jsp");
         } else {                       
             //15-set user does not exist error to the session  
             System.out.println("LOGIN FAIL");
             System.out.println(user);
-            session.setAttribute("userErr", "User does not exist, incorrect username or password");
+            session.setAttribute("loginErr", "User does not exist, incorrect username or password");
             //16- redirect user back to the login.jsp   
             response.sendRedirect("login.jsp");
         }

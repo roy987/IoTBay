@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/Users/Roy/Desktop/IoTBay/web/order.jsp</file>
             <file>file:/Users/Roy/Desktop/IoTBay/src/java/uts/isd/controller/ConnServlet.java</file>
             <file>file:/Users/Roy/Desktop/IoTBay/src/java/uts/isd/controller/OrderController.java</file>
@@ -15,6 +16,11 @@
             <file>file:/Users/Roy/Desktop/IoTBay/src/java/uts/isd/model/dao/DBManager.java</file>
             <file>file:/Users/Roy/Desktop/IoTBay/src/java/uts/isd/model/User.java</file>
             <file>file:/Users/Roy/Desktop/IoTBay/src/java/uts/isd/model/dao/DBConnector.java</file>
+=======
+            <file>file:/C:/Users/jyapr/Desktop/IoTBay/web/main.jsp</file>
+            <file>file:/C:/Users/jyapr/Desktop/IoTBay/web/index.jsp</file>
+            <file>file:/C:/Users/jyapr/Desktop/IoTBay/web/one.jsp</file>
+>>>>>>> main
         </group>
     </open-files>
 </project-private>

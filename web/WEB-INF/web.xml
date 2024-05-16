@@ -10,6 +10,10 @@
         <servlet-class>uts.isd.controller.LoginController</servlet-class>
     </servlet>
     <servlet>
+        <servlet-name>ShippingController</servlet-name>
+        <servlet-class>uts.isd.controller.ShippingController</servlet-class>
+    </servlet>
+    <servlet>
         <servlet-name>RegistrationController</servlet-name>
         <servlet-class>uts.isd.controller.RegistrationController</servlet-class>
     </servlet>
@@ -98,6 +102,7 @@
         <url-pattern>/LogoutController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
+<<<<<<< HEAD
         <servlet-name>ViewProductsController</servlet-name>
         <url-pattern>/ViewProductsController</url-pattern>
     </servlet-mapping>
@@ -124,6 +129,10 @@
     <servlet-mapping>
         <servlet-name>LoadUpdateController</servlet-name>
         <url-pattern>/LoadUpdateController</url-pattern>
+=======
+        <servlet-name>ShippingController</servlet-name>
+        <url-pattern>/ShippingController</url-pattern>
+>>>>>>> main
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
