@@ -32,8 +32,7 @@ public class RegisterCustomerController extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String name = request.getParameter("name");
-        String fav_col = request.getParameter("fav_col");
-        String gender = request.getParameter("gender");
+        String phone = request.getParameter("phone");
         String tos = request.getParameter("tos");
         
         //5- retrieve the manager instance from session      
@@ -59,14 +58,17 @@ public class RegisterCustomerController extends HttpServlet {
 
             if (user == null) {
                 try {
-                    manager.addUser(email, name, password, gender, fav_col, "1");
+                    System.out.println("adding user");
+                    manager.addUser(email, name, password, phone, "1");
+                    System.out.println("added user "+ email);
                     manager.addLogRegister(email);
                 } catch (SQLException ex) {
                     Logger.getLogger(RegisterCustomerController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            session.setAttribute("user", new User(email, name, password, gender, fav_col, "1"));
-            response.sendRedirect("welcome.jsp");
+            session.setAttribute("user", new User(email, name, password, phone, "1"));
+            response.sendRedirect("main.jsp");
+            
         }  
     }
 

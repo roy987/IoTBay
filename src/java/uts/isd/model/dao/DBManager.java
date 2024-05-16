@@ -38,21 +38,21 @@ public class DBManager {
         ResultSet rs = st.executeQuery(query);
         
         if (rs.next()) {
-            User user = new User(rs.getString("email"), rs.getString("name"), rs.getString("password"), rs.getString("gender"), rs.getString("fav_col"), rs.getString("customer"));
+            User user = new User(rs.getString("email"), rs.getString("name"), rs.getString("password"), rs.getString("phone"), rs.getString("customer"));
             return user;
         }
         return null;
     }
 
     // Add a user-data into the database
-    public void addUser(String email, String name, String password, String gender, String fav_col, String customer) throws SQLException {
-        String query = "INSERT INTO users (email, name, password, gender, fav_col, customer) VALUES ('" + email + "', '" + name + "', '" + password + "', '" + gender + "', '" + fav_col + "', '" + customer + "')";
+    public void addUser(String email, String name, String password, String phone, String customer) throws SQLException {
+        String query = "INSERT INTO users (email, name, password, phone, customer) VALUES ('" + email + "', '" + name + "', '" + password + "', '" + phone + "', '" + customer + "')";
         st.executeUpdate(query);
     }
 
     // Update a user details in the database
-    public void updateUser(String email, String name, String password, String gender, String fav_col) throws SQLException {
-        String query = "UPDATE users SET name = '" + name + "', password = '" + password + "', gender = '" + gender + "', fav_col = '" + fav_col + "' WHERE email = '" + email + "'";
+    public void updateUser(String email, String name, String password, String phone) throws SQLException {
+        String query = "UPDATE users SET name = '" + name + "', password = '" + password + "', phone = '" + phone + "' WHERE email = '" + email + "'";
         st.executeUpdate(query);
     }
     

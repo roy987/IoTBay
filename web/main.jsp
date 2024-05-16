@@ -13,19 +13,19 @@
     User user = (User) session.getAttribute("user");
     
     // Initialize variables to store user details
+    String name = "";
     String email = "";
     String password = "";
-    String gender = "";
-    String fav_col = "";
+    String phone = "";
     String customer = "";
     String text_message = "";
     
     // Populate user details if user object exists
     if (user != null) {
+        name = user.getName();
         email = user.getEmail();
         password = user.getPassword();
-        gender = user.getGender();
-        fav_col = user.getFavouriteColour();
+        phone = user.getPhone();
         customer = user.getCustomer();
         
         if (customer == "1") {
@@ -117,13 +117,12 @@
     <!-- Main content section -->
     <div class="content">
         <div class="details">
-            <p>Hi <%= user.getName() %>! Here's a bit about yourself,</p>
+            <p>Hi <%= name %>! Here's a bit about yourself,</p>
             <!-- Display user information in a styled container -->
             <div class="infoItems">
                 <%= text_message %> <br><br>
                 Your email is <%= email %> <br><br>
-                Your password is <%= password %><br><br>
-                Your gender is <%= gender %><br><br>
+                Your phone number is <%= phone %><br><br>
             </div>
         </div>
     </div>
