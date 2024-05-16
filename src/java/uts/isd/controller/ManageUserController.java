@@ -32,8 +32,7 @@ public class ManageUserController extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String name = request.getParameter("name");
-        String fav_col = request.getParameter("fav_col");
-        String gender = request.getParameter("gender");
+        String phone = request.getParameter("phone");
         String customer = request.getParameter("customer");
         
         //5- retrieve the manager instance from session      
@@ -50,12 +49,12 @@ public class ManageUserController extends HttpServlet {
         } 
         else {
             try {
-                manager.updateUser(email, name, password, gender, fav_col);
+                manager.updateUser(email, name, password, phone);
                 System.out.println("USER UPDATED");
             } catch (SQLException ex) {
                 Logger.getLogger(ManageUserController.class.getName()).log(Level.SEVERE, null, ex);
             }
-            session.setAttribute("user", new User(email, name, password, gender, fav_col, customer));
+            session.setAttribute("user", new User(email, name, password, phone, customer));
             response.sendRedirect("main.jsp");
         }  
     }

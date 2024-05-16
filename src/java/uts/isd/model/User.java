@@ -16,24 +16,26 @@ public class User implements Serializable {
     private String email;
     private String name;
     private String password;
-    private String gender;
-    private String favouriteColour;
+    private String phone;
     private String customer;
     
     public User() {
     }
 
-    public User(String email, String name, String password, String gender, String favouriteColour, String customer) {
+    public User(String email, String name, String password,String phone, String customer) {
         this.email = email;
         this.name = name;
+        this.phone = phone;
         this.password = password;
-        this.gender = gender;
-        this.favouriteColour = favouriteColour;
         this.customer = customer;
     }
    // Getter and Setter methods for email
     public String getEmail() {
         return email;
+    }
+    
+    public String getPhone() {
+        return phone;
     }
     
     public String getCustomer() {
@@ -62,24 +64,6 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    // Getter and Setter methods for gender
-    public String getGender() {
-        return gender;
-    }
-
-    public void setGender(String gender) {
-        this.gender = gender;
-    }
-
-    // Getter and Setter methods for favouriteColour
-    public String getFavouriteColour() {
-        return favouriteColour;
-    }
-
-    public void setFavouriteColour(String favouriteColour) {
-        this.favouriteColour = favouriteColour;
-    }
-
     // toString method to display object's information
     @Override
     public String toString() {
@@ -87,8 +71,7 @@ public class User implements Serializable {
                 "email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
-                ", gender='" + gender + '\'' +
-                ", favouriteColour='" + favouriteColour + '\'' +
+                ", phone='" + phone + '\'' +
                 ", customer='" + customer + '\'' +
                 '}';
     }
