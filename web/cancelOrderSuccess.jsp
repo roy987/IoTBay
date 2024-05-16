@@ -3,7 +3,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Order</title>
+        <title>Order Cancelled</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <style>
             .navbar{
@@ -14,6 +14,13 @@
             }
             .content{
                 padding: 15px;
+            }
+            .order-page {
+                padding: 20px;
+                justify-content: center;
+                width: 100%;
+                text-align: center;
+                
             }
         </style>
 
@@ -56,6 +63,10 @@
                 </div>
             </nav>
         </div>
-        <!--<h1 >Hello World!</h1>-->
+        <div class="order-page">
+            <h1>Order Cancelled Successfully</h1>
+            <p>Head over to the Orders page to view and track your other orders</p>
+        </div>
+
     </body>
 </html>

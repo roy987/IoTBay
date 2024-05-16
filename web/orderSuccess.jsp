@@ -15,6 +15,13 @@
             .content{
                 padding: 15px;
             }
+            .order-page {
+                padding: 20px;
+                justify-content: center;
+                width: 100%;
+                text-align: center;
+                
+            }
         </style>
 
     </head>
@@ -56,6 +63,10 @@
                 </div>
             </nav>
         </div>
-        <!--<h1 >Hello World!</h1>-->
+        <div class="order-page">
+            <h1>Order Success!</h1>
+            <p>Head over to the Orders page to view and track your order</p>
+        </div>
+
     </body>
 </html>
