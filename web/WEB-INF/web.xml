@@ -111,7 +111,7 @@
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>StartOrderController</servlet-name>
-        <url-pattern>/StartOrderController</url
+        <url-pattern>/StartOrderController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>CreateOrderController</servlet-name>
