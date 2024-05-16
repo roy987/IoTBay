@@ -81,44 +81,29 @@
             <a class="navbar-brand" href="./main.jsp">IoTBay</a>
             <div class="d-flex justify-content-between w-100">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="ViewProductsController">Products</a>
+                    <li class="nav-item ">
+                            <a class="nav-link" href="LogoutController">Logout </a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="ViewOrdersController">Orders</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Payment</a>
+                        <a class="nav-link" href="manageUser.jsp">Manage User</a>
                     </li>
                     
                     <li class="nav-item">
                         <a class="nav-link" href="shippingMain.jsp">Shipping</a>
                     </li>   
 
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Shipment</a>
+                    <li class="nav-item dropdown">
                     </li>
 
-
-                </ul>
-
-                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="UserLogsController">View Logs</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="manageUser.jsp">Manage Account</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="LogoutController">Logout</a>
-                    </li>
-
+                    
                 </ul>
             </div>
         </nav>
     </div>
-
     <div class="title">Welcome!</div>
     <!-- Main content section -->
     <div class="content">
