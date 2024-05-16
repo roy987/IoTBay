@@ -107,16 +107,13 @@
                     <li class="nav-item">
                         <a class="nav-link" href="UserLogsController">View Logs</a>
                     </li>
-<<<<<<< HEAD
                     <li class="nav-item">
                         <a class="nav-link" href="manageUser.jsp">Manage Account</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="LogoutController">Logout</a>
                     </li>
-=======
-                    
->>>>>>> main
+
                 </ul>
             </div>
         </nav>
