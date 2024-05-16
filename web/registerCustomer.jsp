@@ -66,7 +66,7 @@
             </nav>
         </div>
         
-        <div class="title">Resister (Customer)</div>
+        <div class="title">Register (Customer)</div>
         <!-- Registration form section -->
         <div class="details">
             <form action="RegisterCustomerController" method="POST">
