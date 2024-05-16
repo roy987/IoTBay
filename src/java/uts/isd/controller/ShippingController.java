@@ -17,7 +17,6 @@ public class ShippingController extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("GET!");
         HttpSession session = request.getSession();
         ShippingModel shippingModel = (ShippingModel) session.getAttribute("shippingModel");
 
@@ -32,27 +31,25 @@ public class ShippingController extends HttpServlet {
     
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("POST!");
-        HttpSession session = request.getSession();
+        String action = request.getParameter("action");
 
-        String address = request.getParameter("address");
-        String method = request.getParameter("method");
-        String date = request.getParameter("date");
+        if ("delete".equals(action)) {
+            HttpSession session = request.getSession();
 
-        ShippingModel shippingModel = new ShippingModel(address, method, date);
-        session.setAttribute("shippingModel", shippingModel);
-        response.sendRedirect("shippingMain.jsp"); 
-    }
-    
-    @Override
-    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("DELETE!");
-        HttpSession session = request.getSession();
+            session.removeAttribute("shippingModel");
 
-        // Remove the shippingDetails attribute from the session
-        session.removeAttribute("shippingModel");
+            response.sendRedirect("shippingMain.jsp");
+            
+        } else {
+            HttpSession session = request.getSession();
 
-        // Redirect to the shippingMain.jsp to display the updated state
-        response.sendRedirect("shippingMain.jsp");
+            String address = request.getParameter("address");
+            String method = request.getParameter("method");
+            String date = request.getParameter("date");
+
+            ShippingModel shippingModel = new ShippingModel(address, method, date);
+            session.setAttribute("shippingModel", shippingModel);
+            response.sendRedirect("shippingMain.jsp"); 
+        }
     }
 }

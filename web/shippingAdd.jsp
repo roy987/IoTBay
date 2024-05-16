@@ -1,9 +1,3 @@
-<%-- 
-    Document   : shippingAdd
-    Created on : 14 May 2024, 10:05:25 pm
-    Author     : jyapr
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -109,12 +103,20 @@
             <div class="form-group">
                 <button type="submit" class="btn btn-primary">Save</button>
                 
-                <button type="button" id="deleteButton" class="btn btn-danger">Delete</button>
+                <input type="hidden" id="action" name="action" value="save">
+                <button type="button" id="deleteButton" class="btn btn-danger" onclick="deleteShippingDetails()">Delete</button>
                 
                 <a href="./shippingMain.jsp" class="btn btn-secondary">Back</a>
             </div>
         </form>
     </div>
 </div>
+
+<script>
+    function deleteShippingDetails() {
+        document.getElementById('action').value = 'delete';
+        document.querySelector('form').submit();
+    }
+</script>
 </body>
 </html>
