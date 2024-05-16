@@ -91,7 +91,7 @@
     </div>
     <div class="shippingDisplay">
         <%
-            out.println("<p>Shipping Model " + shippingModel + "</p>");
+            ShippingModel shippingModel = (ShippingModel) session.getAttribute("shippingModel");
             if (shippingModel != null) {
                 out.println("<p>Shipping Method: " + shippingModel.getMethod() + "</p>");
                 out.println("<p>Shipping Address: " + shippingModel.getAddress() + "</p>");
