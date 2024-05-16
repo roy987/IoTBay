@@ -14,7 +14,7 @@ import uts.isd.model.Product;
 import uts.isd.model.User;
 import uts.isd.model.dao.DBManager;
 
-public class CreateOrderController extends HttpServlet {
+public class UpdateOrderController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -27,6 +27,7 @@ public class CreateOrderController extends HttpServlet {
         DBManager manager = (DBManager) session.getAttribute("manager");
         String email = user.getEmail();
         String action = request.getParameter("action");
+        int orderID = Integer.parseInt(request.getParameter("orderID"));
         int productID = Integer.parseInt(request.getParameter("productID"));
         int shipmentID = Integer.parseInt(request.getParameter("shipmentMethod"));
         int paymentID = Integer.parseInt(request.getParameter("paymentMethod"));
@@ -34,14 +35,15 @@ public class CreateOrderController extends HttpServlet {
         try {
             if ("save".equals(action)) {
                 // Code to save the order with status "pending"
-                manager.createOrder(email, "Pending", productID, shipmentID, paymentID);
+                manager.updateOrder(orderID, email, "Pending", productID, shipmentID, paymentID);
             } else if ("submit".equals(action)) {
                 // Code to submit the order with status "shipping"
                 manager.decrementProductStock(productID);
 
-                manager.createOrder(email, "Shipping", productID, shipmentID, paymentID);
+                manager.updateOrder(orderID, email, "Shipping", productID, shipmentID, paymentID);
+                
             }
-            response.sendRedirect("orderSuccess.jsp");
+            response.sendRedirect("updateOrderSuccess.jsp");
             // Forward to orders.jsp for rendering
 
         } catch (SQLException ex) {

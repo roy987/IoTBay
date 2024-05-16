@@ -173,42 +173,78 @@ public class DBManager {
 
         while (rs.next()) {
                
-            String orderID = rs.getString("orderID");
-            String date = rs.getString("date");
+            int orderID = rs.getInt("orderID");
+            Date date = rs.getDate("date");
             String email = rs.getString("email");
             String orderStatus = rs.getString("orderStatus");
-            String productID = rs.getString("productID");
-            String paymentID = rs.getString("paymentID");
-            String deliveryID = rs.getString("deliveryID");
+            int productID = rs.getInt("productID");
+            int paymentID = rs.getInt("paymentID");
+            int shipmentID = rs.getInt("shipmentID");
 
-            Order order = new Order(orderID, date, email, orderStatus, productID, paymentID, deliveryID);
+            Order order = new Order(orderID, date, email, orderStatus, productID, paymentID, shipmentID);
             orders.add(order);
         }
         System.out.println(orders + "these are the orders g");
         return orders;
     }    
     
+    public void createOrder(String email, String orderStatus, int productID, int shipmentID, int paymentID) throws SQLException {
+        String query = "INSERT INTO orders (email, orderStatus, productID, paymentID, shipmentID) VALUES ('" + email + "', '" + orderStatus + "', " + productID + ", " + paymentID + ", " + shipmentID + ")";
+        st.executeUpdate(query);
+    }
+
+    public void updateOrder(int orderID, String email, String orderStatus, int productID, int shipmentID, int paymentID) throws SQLException {
+        String query = "UPDATE orders SET email = '" + email + "', orderStatus = '" + orderStatus + "', productID = " + productID + ", shipmentID = " + shipmentID + ", paymentID = " + paymentID + " WHERE orderID = " + orderID;
+        st.executeUpdate(query);
+    }
+
+    public void updateOrderStatus(int orderID, String newOrderStatus) throws SQLException {
+        String query = "UPDATE orders SET orderStatus = '" + newOrderStatus + "' WHERE orderID = " + orderID;
+        st.executeUpdate(query);
+    }
     
-    public Product getProductFromDatabase(String productID) throws SQLException {
+    public Order getOrderByID(int orderID) throws SQLException {
+        Order order = null;
+        String query = "SELECT * FROM orders WHERE orderID = " + orderID;
+        ResultSet rs = st.executeQuery(query);
+        if (rs.next()) {
+            // Retrieve order details from the ResultSet
+            String email = rs.getString("email");
+            Date date = rs.getDate("date");
+
+            String orderStatus = rs.getString("orderStatus");
+            int productID = rs.getInt("productID");
+            int shipmentID = rs.getInt("shipmentID");
+            int paymentID = rs.getInt("paymentID");
+
+            // Create an Order object with retrieved details
+            order = new Order(orderID, date, email, orderStatus, productID, shipmentID, paymentID);
+        }
+        return order;
+    }
+    
+    
+    public Product getProductFromDatabase(int productID) throws SQLException {
         String query = "SELECT * FROM products WHERE productID = ?";
         PreparedStatement preparedStatement = st.getConnection().prepareStatement(query);
-        preparedStatement.setString(1, productID);
+        preparedStatement.setInt(1, productID); // Set int parameter
         ResultSet rs = preparedStatement.executeQuery();
 
         if (rs.next()) {
             Product product = new Product(
-                rs.getString("productID"),
-                rs.getString("productName"),
-                rs.getInt("stock"),
-                rs.getDouble("price")
+                    rs.getInt("productID"),
+                    rs.getString("productName"),
+                    rs.getInt("stock"),
+                    rs.getDouble("price")
             );
             return product;
         }
         return null;
     }
 
+
     // Method to get product details based on productID
-    public Product getProductDetails(String productID) throws SQLException {
+    public Product getProductDetails(int productID) throws SQLException {
         return getProductFromDatabase(productID);
     }
     public List<Product> getAllProducts() throws SQLException {
@@ -218,7 +254,7 @@ public class DBManager {
 
         while (rs.next()) {
             Product product = new Product(
-                rs.getString("productID"),
+                rs.getInt("productID"),
                 rs.getString("productName"),
                 rs.getInt("stock"),
                 rs.getDouble("price")
@@ -228,4 +264,24 @@ public class DBManager {
 
         return products;
     }
+    public void decrementProductStock(int productID) throws SQLException {
+        // Retrieve the current stock level of the product
+        String getStockQuery = "SELECT stock FROM products WHERE productID = " + productID;
+        ResultSet rs = st.executeQuery(getStockQuery);
+        if (rs.next()) {
+            int currentStock = rs.getInt("stock");
+            if (currentStock > 0) {
+                // Decrement the stock by 1
+                int newStock = currentStock - 1;
+                // Update the product record in the database
+                String updateStockQuery = "UPDATE products SET stock = " + newStock + " WHERE productID = " + productID;
+                st.executeUpdate(updateStockQuery);
+            } else {
+                throw new SQLException("Insufficient stock for productID: " + productID);
+            }
+        } else {
+            throw new SQLException("Product not found for productID: " + productID);
+        }
+    }
+
 }

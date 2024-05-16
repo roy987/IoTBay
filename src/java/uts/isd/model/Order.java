@@ -2,47 +2,52 @@ package uts.isd.model;
 
 import java.beans.*;
 import java.io.Serializable;
+import java.util.Date;
+
 
 /**
  *
  * @author Roy
  */
+
 public class Order implements Serializable {
 
-    private String orderID;
-    private String date;
+    private int orderID;
+    private Date date;
     private String email;
     private String orderStatus;
-    private String productID;
-    private String paymentID;
-    private String deliveryID;
+    private int productID;
+    private int paymentID;
+    private int shipmentID;
+    private Product product;
 
+    // Constructors, getters, and setters
     public Order() {
     }
 
-    public Order(String orderID, String date, String email, String orderStatus, String productID, String paymentID, String deliveryID) {
+    public Order(int orderID, Date date, String email, String orderStatus, int productID, int paymentID, int shipmentID) {
         this.orderID = orderID;
         this.date = date;
         this.email = email;
         this.orderStatus = orderStatus;
         this.productID = productID;
         this.paymentID = paymentID;
-        this.deliveryID = deliveryID;
+        this.shipmentID = shipmentID;
     }
 
-    public String getOrderID() {
+    public int getOrderID() {
         return orderID;
     }
 
-    public void setOrderID(String orderID) {
+    public void setOrderID(int orderID) {
         this.orderID = orderID;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
@@ -62,40 +67,49 @@ public class Order implements Serializable {
         this.orderStatus = orderStatus;
     }
 
-    public String getProductID() {
+    public int getProductID() {
         return productID;
     }
 
-    public void setProductID(String productID) {
+    public void setProductID(int productID) {
         this.productID = productID;
     }
 
-    public String getPaymentID() {
+    public int getPaymentID() {
         return paymentID;
     }
 
-    public void setPaymentID(String paymentID) {
+    public void setPaymentID(int paymentID) {
         this.paymentID = paymentID;
     }
 
-    public String getDeliveryID() {
-        return deliveryID;
+    public int getShipmentID() {
+        return shipmentID;
     }
 
-    public void setDeliveryID(String deliveryID) {
-        this.deliveryID = deliveryID;
+    public void setShipmentID(int shipmentID) {
+        this.shipmentID = shipmentID;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     @Override
     public String toString() {
-        return "Order{" +
-                "orderID='" + orderID + '\'' +
-                ", date='" + date + '\'' +
-                ", email='" + email + '\'' +
-                ", orderStatus='" + orderStatus + '\'' +
-                ", productID='" + productID + '\'' +
-                ", paymentID='" + paymentID + '\'' +
-                ", deliveryID='" + deliveryID + '\'' +
-                '}';
+        return "Order{"
+                + "orderID=" + orderID
+                + ", date=" + date
+                + ", email='" + email + '\''
+                + ", orderStatus='" + orderStatus + '\''
+                + ", productID=" + productID
+                + ", paymentID=" + paymentID
+                + ", shipmentID=" + shipmentID
+                + ", product=" + product
+                + '}';
     }
 }

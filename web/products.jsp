@@ -84,9 +84,12 @@
                             <td><%= product.getStock() %></td>
                             <td>$<%= product.getPrice() %></td>
                             <td>                        
-                                <form action="CreateOrderController" method="post">
+                                <form action="StartOrderController" method="post">
                                 <input type="hidden" name="productID" value="<%= product.getProductID() %>">
-                                <button type="submit" class="btn btn-primary">Purchase</button>
+                                <button type="submit" <% if (product.getStock() <= 0) out.print("disabled"); %> class="btn btn-primary">Purchase</button>
+                                <% if (product.getStock() <= 0) { %>
+                                <p class="out-of-stock">Out of Stock</p>
+                                <% } %>                                
                                 </form>
                             </td>
                         </tr>

@@ -6,12 +6,17 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uts.isd.model.Product"%>
+<%@page import="uts.isd.model.Order"%>
 
 <!DOCTYPE html>
+<%
+    // Declare the Order object
+    Order order = (Order) request.getAttribute("order");
+%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Order</title>
+        <title>Update Order</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <style>
             .navbar{
@@ -108,7 +113,7 @@
             <div class="order-form">
                 <h1>Order</h1>
                 <p>Please ensure you have added your payment and shipment details before completing the order.</p>
-                <form action="CreateOrderController" method="post">
+                <form action="UpdateOrderController" method="post">
                     <div class="section">
                         <!-- Display selected product details (you might need to adjust this part based on how you pass the product object) -->
                         <h2 class="section-title">Product</h2>
@@ -145,20 +150,21 @@
                     <div class="section">
                         <h2 class="section-title">Shipment Method</h2>
                         <select class="form-control" name="shipmentMethod">
-                            <option value="1">Standard Delivery</option>
-                            <option value="2">Express Delivery</option>
+                            <option value="1" <% if (order != null && order.getShipmentID() == 1) out.print("selected"); %>>Standard Delivery</option>
+                            <option value="2" <% if (order != null && order.getShipmentID() == 2) out.print("selected"); %>>Express Delivery</option>
                         </select>
                     </div>
                     <div class="section">
                         <h2 class="section-title">Payment Method</h2>
                         <select class="form-control" name="paymentMethod">
-                            <option value="1">Credit Card</option>
-                            <option value="2">PayPal</option>
-                            <option value="3">Bank Transfer</option>
+                            <option value="1" <% if (order != null && order.getPaymentID() == 1) out.print("selected"); %>>Credit Card</option>
+                            <option value="2" <% if (order != null && order.getPaymentID() == 2) out.print("selected"); %>>PayPal</option>
+                            <option value="3" <% if (order != null && order.getPaymentID() == 3) out.print("selected"); %>>Bank Transfer</option>
                         </select>
                     </div>
                     <div class="button-section">
                         <input type="hidden" name="productID" value="<%= product.getProductID() %>">
+                        <input type="hidden" name="orderID" value="<%= order.getOrderID()%>">
 
                         <button type="submit" name="action" value="save" class="buttons bg-primary">Save</button>
                         <button type="submit" name ="action" value="submit" class="buttons bg-primary">Submit</button>

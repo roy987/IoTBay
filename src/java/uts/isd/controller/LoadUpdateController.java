@@ -10,42 +10,45 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import uts.isd.model.Order;
 import uts.isd.model.Product;
+
 import uts.isd.model.User;
 import uts.isd.model.dao.DBManager;
 
-public class CreateOrderController extends HttpServlet {
+public class LoadUpdateController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
+//        if (user == null) {
+//            // Redirect to login page if user is not logged in
+//            response.sendRedirect("login.jsp");
+//            return;
+//        }
+        int orderID = Integer.parseInt(request.getParameter("orderID"));
         
-
 
         // Retrieve the manager instance from session      
         DBManager manager = (DBManager) session.getAttribute("manager");
         String email = user.getEmail();
-        String action = request.getParameter("action");
-        int productID = Integer.parseInt(request.getParameter("productID"));
-        int shipmentID = Integer.parseInt(request.getParameter("shipmentMethod"));
-        int paymentID = Integer.parseInt(request.getParameter("paymentMethod"));
 
         try {
-            if ("save".equals(action)) {
-                // Code to save the order with status "pending"
-                manager.createOrder(email, "Pending", productID, shipmentID, paymentID);
-            } else if ("submit".equals(action)) {
-                // Code to submit the order with status "shipping"
-                manager.decrementProductStock(productID);
+            // Fetch orders from the database
+            Order order = manager.getOrderByID(orderID);
+            Product product = manager.getProductDetails(order.getProductID());
+            System.out.println("order: " + order);
+            // Store orders in request attribute
+            request.setAttribute("order", order);
+            
+            request.setAttribute("product", product);
 
-                manager.createOrder(email, "Shipping", productID, shipmentID, paymentID);
-            }
-            response.sendRedirect("orderSuccess.jsp");
             // Forward to orders.jsp for rendering
+            request.getRequestDispatcher("updateOrder.jsp").forward(request, response);
 
         } catch (SQLException ex) {
-            Logger.getLogger(CreateOrderController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(StartOrderController.class.getName()).log(Level.SEVERE, null, ex);
             // Handle exception
         }
     }
