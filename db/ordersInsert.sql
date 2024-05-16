@@ -1,9 +1,9 @@
 INSERT INTO orders (orderID, date, email, orderStatus, productID, paymentID, deliveryID) VALUES
-('1001', '2024-05-15', 'john@example.com', 'Pending', 'P001', 'PAY001', 'DEL001'),
-('1006', '2024-05-20', 'john@example.com', 'Shipped', 'P006', 'PAY006', 'DEL006'),
-('1011', '2024-05-25', 'john@example.com', 'Delivered', 'P011', 'PAY011', 'DEL011'),
-('1016', '2024-05-30', 'john@example.com', 'Pending', 'P016', 'PAY016', 'DEL016'),
-('1021', '2024-06-04', 'john@example.com', 'Processing', 'P021', 'PAY021', 'DEL021')
+('1001', '2024-05-15', 'john123@mail.com', 'Pending', 'P001', 'PAY001', 'DEL001'),
+('1006', '2024-05-20', 'john123@mail.com', 'Shipped', 'P006', 'PAY006', 'DEL006'),
+('1011', '2024-05-25', 'john123@mail.com', 'Delivered', 'P011', 'PAY011', 'DEL011'),
+('1016', '2024-05-30', 'john123@mail.com', 'Pending', 'P016', 'PAY016', 'DEL016'),
+('1021', '2024-06-04', 'john123@mail.com', 'Processing', 'P021', 'PAY021', 'DEL021')
 ('1002', '2024-05-16', 'mary@example.com', 'Shipped', 'P002', 'PAY002', 'DEL002'),
 ('1007', '2024-05-21', 'mary@example.com', 'Delivered', 'P007', 'PAY007', 'DEL007'),
 ('1012', '2024-05-26', 'mary@example.com', 'Pending', 'P012', 'PAY012', 'DEL012'),
