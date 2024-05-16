@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package uts.isd.controller;
 
 import java.io.IOException;
@@ -10,26 +6,27 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import uts.isd.model.Shipping.ShippingDetails;
+import uts.isd.model.shippingModel;  // Corrected import statement
 
 /**
- *
- * @author jyapr
+ * ShippingController class to handle shipping related requests.
+ * 
+ * Author: jyapr
  */
 public class ShippingController extends HttpServlet {
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        ShippingDetails shippingDetails = (ShippingDetails) session.getAttribute("shippingDetails");
+        shippingModel shippingModel = (shippingModel) session.getAttribute("shippingModel");
 
-        if (shippingDetails != null) {
-            request.setAttribute("shippingDetails", shippingDetails);
+        if (shippingModel != null) {
+            request.setAttribute("shippingModel", shippingModel);
         } else {
-            request.setAttribute("shippingDetails", null);
+            request.setAttribute("shippingModel", null);
         }
 
-        request.getRequestDispatcher("shippingView.jsp").forward(request, response);
+        request.getRequestDispatcher("shippingMain.jsp").forward(request, response);
     }
     
     @Override
@@ -40,9 +37,19 @@ public class ShippingController extends HttpServlet {
         String method = request.getParameter("method");
         String date = request.getParameter("date");
 
-        ShippingDetails shippingDetails = new ShippingDetails(address, method, date);
-        session.setAttribute("shippingDetails", shippingDetails);
+        session.setAttribute("shippingModel", new shippingModel(address, method, date));
 
-        response.sendRedirect("shipping");
+        response.sendRedirect("shippingMain.jsp"); 
+    }
+    
+    @Override
+    protected void doDelete(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+
+        // Remove the shippingDetails attribute from the session
+        session.removeAttribute("shippingModel");
+
+        // Redirect to the shippingMain.jsp to display the updated state
+        response.sendRedirect("shippingMain.jsp");
     }
 }
