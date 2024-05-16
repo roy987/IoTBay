@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import uts.isd.model.Order;
+import uts.isd.model.Product;
+
 
 /* 
 * DBManager is the primary DAO class to interact with the database. 
@@ -120,46 +122,110 @@ public class DBManager {
         return null;
         
     }
-    
-          // Find orders by email in the database
-    public List<Order> findOrders(String email) throws SQLException {
-    List<Order> orders = new ArrayList<>();
-    String query = "SELECT * FROM ORDERS WHERE email = ?";
-    PreparedStatement preparedStatement = st.getConnection().prepareStatement(query);
-    preparedStatement.setString(1, email);
-    ResultSet rs = preparedStatement.executeQuery();
-
-    while (rs.next()) {
-        Order order = new Order(
-            rs.getString("orderID"),
-            rs.getString("date"),
-            rs.getString("email"),
-            rs.getString("orderStatus"),
-            rs.getString("productName"),
-            rs.getString("orderTotal")
-        );
-        orders.add(order);
-    }
-
-    return orders;
-}
-
-
-    // Add a user-data into the database
-    public void addOrder(String date, String email, String orderStatus, String productName, String orderTotal) throws SQLException {
-        String query = "INSERT INTO orders (date, email, orderStatus, productName, orderTotal) VALUES ('" + date + "', '" + email + "', '" + orderStatus + "', '" + productName + "', '" + orderTotal + "')";
-        st.executeUpdate(query);
-    }
-
-    // Update a user details in the database
-    public void updateOrder(String orderID, String date, String email, String orderStatus, String productName, String orderTotal) throws SQLException {
-        String query = "UPDATE orders SET date = '" + date + "', email = '" + email + "', orderStatus = '" + orderStatus + "', productName = '" + productName + "', orderTotal = '" + orderTotal + "' WHERE orderID = '" + orderID + "'";
-        st.executeUpdate(query);
-    } 
-
-    // Delete a user from the database
-//    public void deleteOrder(String email) throws SQLException {
-//        String query = "DELETE FROM users WHERE email = '" + email + "'";
+//    
+//          // Find orders by email in the database
+//    public List<Order> findOrders(String email) throws SQLException {
+//    List<Order> orders = new ArrayList<>();
+//    String query = "SELECT * FROM ORDERS WHERE email = ?";
+//    PreparedStatement preparedStatement = st.getConnection().prepareStatement(query);
+//    preparedStatement.setString(1, email);
+//    ResultSet rs = preparedStatement.executeQuery();
+//
+//    while (rs.next()) {
+//        Order order = new Order(
+//            rs.getString("orderID"),
+//            rs.getString("date"),
+//            rs.getString("email"),
+//            rs.getString("orderStatus"),
+//            rs.getString("productName"),
+//            rs.getString("orderTotal")
+//        );
+//        orders.add(order);
+//    }
+//
+//    return orders;
+//}
+//
+//
+//    // Add a user-data into the database
+//    public void addOrder(String date, String email, String orderStatus, String productName, String orderTotal) throws SQLException {
+//        String query = "INSERT INTO orders (date, email, orderStatus, productName, orderTotal) VALUES ('" + date + "', '" + email + "', '" + orderStatus + "', '" + productName + "', '" + orderTotal + "')";
 //        st.executeUpdate(query);
 //    }
+//
+//    // Update a user details in the database
+//    public void updateOrder(String orderID, String date, String email, String orderStatus, String productName, String orderTotal) throws SQLException {
+//        String query = "UPDATE orders SET date = '" + date + "', email = '" + email + "', orderStatus = '" + orderStatus + "', productName = '" + productName + "', orderTotal = '" + orderTotal + "' WHERE orderID = '" + orderID + "'";
+//        st.executeUpdate(query);
+//    } 
+//
+//    // Delete a user from the database
+////    public void deleteOrder(String email) throws SQLException {
+////        String query = "DELETE FROM users WHERE email = '" + email + "'";
+////        st.executeUpdate(query);
+////    }
+//    
+
+    public List<Order> getAllOrders(String userEmail) throws SQLException {     
+        List<Order> orders = new ArrayList<>();
+        String query = "SELECT * FROM orders WHERE email = '" + userEmail + "'";
+        ResultSet rs = st.executeQuery(query);
+
+        while (rs.next()) {
+               
+            String orderID = rs.getString("orderID");
+            String date = rs.getString("date");
+            String email = rs.getString("email");
+            String orderStatus = rs.getString("orderStatus");
+            String productID = rs.getString("productID");
+            String paymentID = rs.getString("paymentID");
+            String deliveryID = rs.getString("deliveryID");
+
+            Order order = new Order(orderID, date, email, orderStatus, productID, paymentID, deliveryID);
+            orders.add(order);
+        }
+        System.out.println(orders + "these are the orders g");
+        return orders;
+    }    
+    
+    
+    public Product getProductFromDatabase(String productID) throws SQLException {
+        String query = "SELECT * FROM products WHERE productID = ?";
+        PreparedStatement preparedStatement = st.getConnection().prepareStatement(query);
+        preparedStatement.setString(1, productID);
+        ResultSet rs = preparedStatement.executeQuery();
+
+        if (rs.next()) {
+            Product product = new Product(
+                rs.getString("productID"),
+                rs.getString("productName"),
+                rs.getInt("stock"),
+                rs.getDouble("price")
+            );
+            return product;
+        }
+        return null;
+    }
+
+    // Method to get product details based on productID
+    public Product getProductDetails(String productID) throws SQLException {
+        return getProductFromDatabase(productID);
+    }
+    public List<Product> getAllProducts() throws SQLException {
+        List<Product> products = new ArrayList<>();
+        String query = "SELECT * FROM products";
+        ResultSet rs = st.executeQuery(query);
+
+        while (rs.next()) {
+            Product product = new Product(
+                rs.getString("productID"),
+                rs.getString("productName"),
+                rs.getInt("stock"),
+                rs.getDouble("price")
+            );
+            products.add(product);
+        }
+
+        return products;
+    }
 }

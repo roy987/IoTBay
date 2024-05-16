@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="uts.isd.model.Product"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -32,63 +34,124 @@
                 justify-content: center;
                 width: 100%;
             }
+            .section {
+                margin-top: 20px;
+            }
+
+            .section-title {
+                font-size: 24px;
+                font-weight: bold;
+                text-align: center;
+            }
+            
+            .button-section {
+                display: flex;
+                justify-content: space-between;
+                width: 20%;
+                padding: 20px;
+            }
+            
+            .buttons {
+                border-radius: 10px;
+                padding: 8px;
+                padding-left: 12px;
+                padding-right: 12px;
+                color: white;
+                border: none;
+                width: 75px;
+
+            }
             
         </style>
 
     </head>
     <body>
-        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="header">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <a class="navbar-brand" href="./main.jsp">IoTBay</a>
+                <div class="d-flex justify-content-between w-100">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="ViewProductsController">Products</a>
+                        </li>
 
-            <a class="navbar-brand" href="./main.jsp">IoTBay</a>
-            <div class="d-flex justify-content-between w-100">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="#">Products </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Orders</a>
-                    </li>
-                    <li class="nav-item dropdown">
+                        <li class="nav-item">
+                            <a class="nav-link" href="ViewOrdersController">Orders</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Payment</a>
+                        </li>
 
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">My Account</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ml-auto">
-                     <li class="nav-item ">
-                        <a class="nav-link" href="#">Logout </a>
-                    </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Shipment</a>
+                        </li>
 
-                </ul>
-            </div>
-        </nav>
+
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="UserLogsController">View Logs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="manageUser.jsp">Manage Account</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="LogoutController">Logout</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
         <div class="order-page">
-            <div class="d-flex justify-content-start w-100 button-section">
-                <a href="./orders.jsp" class="btn btn-primary">
-                   < My Orders
-                </a>
-            </div>
-            <div class="order-form">
-                <h1>My Orders</h1>
-                <div class=""> 
-                    <form  method="POST">
-                        <div class="form-group">
-                        <label for="date">Date</label>
-                        <input type="text" class="form-control" name="date" placeholder="Enter date" required>
-                        <small class="form-text text-muted">Enter today's date</small>
-                        </div>
-                        <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="text" class="form-control" name="email" placeholder="Enter email" required>
-                        <small class="form-text text-muted">Enter the email you registered with</small>
-                        </div>
-                        <div class="form-group">
-                        <label for="product">Product</label>
-                        <input type="select" class="form-control" name="productName" placeholder="Select product" required>
-                        <small class="form-text text-muted">Enter today's date</small>
-                        </div>
-                    </form>
+           <div class="order-form">
+                <h1>Order</h1>
+                <p>Please ensure you have added your payment and shipment details before completing the order.</p>
+                <div class="section">
+                    <h2 class="section-title">Product</h2>
+                    <table class="table table-striped table-bg  table-bordered table-hover table-rounded"> 
+                        <thead className="">
+                            <tr>
+                                <th>Product ID</th>
+                                <th>Product Name</th>
+                                <th>Price</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% 
+                                // Retrieve products from request attribute
+                                Product product = (Product) request.getAttribute("product");
+                            %>    
+                            <tr>
+                                <td><%= product.getProductID() %></td>
+                                <td><%= product.getProductName() %></td>
+                                <td>$<%= product.getPrice() %></td>
+
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Delivery Method</h2>
+                    <select class="form-control" id="deliveryMethod">
+                        <option value="standard">Standard Delivery</option>
+                        <option value="express">Express Delivery</option>
+                    </select>               
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title">Payment Method</h2>
+                    <select class="form-control" id="paymentMethod">
+                        <option value="creditCard">Credit Card</option>
+                        <option value="paypal">PayPal</option>
+                        <option value="bankTransfer">Bank Transfer</option>
+                    </select>
+                </div>
+                <div class="button-section">
+                    <button class="buttons bg-primary">Save</button>
+                    <button class="buttons bg-primary">Submit</button>
                 </div>
             </div>
         </div>

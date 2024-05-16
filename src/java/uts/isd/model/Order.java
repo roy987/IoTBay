@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Beans/Bean.java to edit this template
- */
 package uts.isd.model;
 
 import java.beans.*;
@@ -17,24 +13,23 @@ public class Order implements Serializable {
     private String date;
     private String email;
     private String orderStatus;
-    private String productName;
-    private String orderTotal;
-
-
+    private String productID;
+    private String paymentID;
+    private String deliveryID;
 
     public Order() {
     }
 
-    public Order(String orderID, String date, String email, String orderStatus, String productName, String orderTotal) {
+    public Order(String orderID, String date, String email, String orderStatus, String productID, String paymentID, String deliveryID) {
         this.orderID = orderID;
         this.date = date;
         this.email = email;
         this.orderStatus = orderStatus;
-        this.productName = productName;
-        this.orderTotal = orderTotal;
-
+        this.productID = productID;
+        this.paymentID = paymentID;
+        this.deliveryID = deliveryID;
     }
-   // Getter and Setter methods for email
+
     public String getOrderID() {
         return orderID;
     }
@@ -43,7 +38,6 @@ public class Order implements Serializable {
         this.orderID = orderID;
     }
 
-    // Getter and Setter methods for date
     public String getDate() {
         return date;
     }
@@ -52,7 +46,6 @@ public class Order implements Serializable {
         this.date = date;
     }
 
-    // Getter and Setter methods for date
     public String getEmail() {
         return email;
     }
@@ -61,7 +54,6 @@ public class Order implements Serializable {
         this.email = email;
     }
 
-    // Getter and Setter methods for order status
     public String getOrderStatus() {
         return orderStatus;
     }
@@ -70,33 +62,40 @@ public class Order implements Serializable {
         this.orderStatus = orderStatus;
     }
 
-    // Getter and Setter methods for product name
-    public String getProductName() {
-        return productName;
+    public String getProductID() {
+        return productID;
     }
 
-    public void setProductName(String productName) {
-        this.productName = productName;
-    }
-    // Getter and Setter methods for order total
-    public String getOrderTotal() {
-        return orderTotal;
-    }
-    public void setOrderTotal(String orderTotal) {
-        this.orderTotal = orderTotal;
+    public void setProductID(String productID) {
+        this.productID = productID;
     }
 
-    // toString method to display object's information
+    public String getPaymentID() {
+        return paymentID;
+    }
+
+    public void setPaymentID(String paymentID) {
+        this.paymentID = paymentID;
+    }
+
+    public String getDeliveryID() {
+        return deliveryID;
+    }
+
+    public void setDeliveryID(String deliveryID) {
+        this.deliveryID = deliveryID;
+    }
+
     @Override
     public String toString() {
-        return "User{" +
+        return "Order{" +
                 "orderID='" + orderID + '\'' +
                 ", date='" + date + '\'' +
+                ", email='" + email + '\'' +
                 ", orderStatus='" + orderStatus + '\'' +
-                ", productName='" + productName + '\'' +           
-                ", orderTotal='" + orderTotal + '\'' +            
-
+                ", productID='" + productID + '\'' +
+                ", paymentID='" + paymentID + '\'' +
+                ", deliveryID='" + deliveryID + '\'' +
                 '}';
     }
-
 }

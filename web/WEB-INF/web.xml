@@ -38,8 +38,16 @@
         <servlet-class>uts.isd.controller.LogoutController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>OrderController</servlet-name>
-        <servlet-class>uts.isd.controller.OrderController</servlet-class>
+        <servlet-name>ViewProductsController</servlet-name>
+        <servlet-class>uts.isd.controller.ViewProductsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewOrdersController</servlet-name>
+        <servlet-class>uts.isd.controller.ViewOrdersController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CreateOrderController</servlet-name>
+        <servlet-class>uts.isd.controller.CreateOrderController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
@@ -74,8 +82,16 @@
         <url-pattern>/LogoutController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>OrderController</servlet-name>
-        <url-pattern>/OrderController</url-pattern>
+        <servlet-name>ViewProductsController</servlet-name>
+        <url-pattern>/ViewProductsController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewOrdersController</servlet-name>
+        <url-pattern>/ViewOrdersController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateOrderController</servlet-name>
+        <url-pattern>/CreateOrderController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
