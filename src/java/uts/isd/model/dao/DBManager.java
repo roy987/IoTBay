@@ -9,7 +9,8 @@ import java.util.Calendar;
 import java.util.List;
 import uts.isd.model.Order;
 import uts.isd.model.Product;
-
+import uts.isd.model.Payment;
+import uts.isd.model.PaymentDetails;
 
 /* 
 * DBManager is the primary DAO class to interact with the database. 
