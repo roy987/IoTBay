@@ -83,7 +83,7 @@
             <p><%= session.getAttribute("registerErr") %></p>
         <% } %>
             
-        <div class="title">Resister (Staff)</div>
+        <div class="title">Register (Staff)</div>
         <!-- Registration form section -->
         <div class="details">
             <form action="RegisterStaffController" method="POST">
