@@ -58,9 +58,7 @@ public class EditDeviceController extends HttpServlet {
         DBManager manager = (DBManager) session.getAttribute("manager");
 //               User user = (User) session.getAttribute("user");
 
-
         int deviceID = Integer.parseInt(request.getParameter("deviceID"));
-        
         try {
             Device device = manager.findDevice(deviceID);
             if (device != null) {
