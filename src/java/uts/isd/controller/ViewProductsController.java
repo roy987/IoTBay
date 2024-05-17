@@ -14,7 +14,7 @@ import uts.isd.model.Product;
 import uts.isd.model.dao.DBManager;
 
 public class ViewProductsController extends HttpServlet {
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
