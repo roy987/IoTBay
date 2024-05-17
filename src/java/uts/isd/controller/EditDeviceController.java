@@ -43,10 +43,9 @@ public class EditDeviceController extends HttpServlet {
                 String driverName = "org.apache.derby.jdbc.ClientDriver";
                 String connectionUrl = "jdbc:derby://localhost:1527/devicedb";
                 String userId = "APP";
-                String password = "APP"; // Add your database password here
                 
                 Class.forName(driverName);
-                Connection connection = DriverManager.getConnection(connectionUrl, userId, password);
+                Connection connection = DriverManager.getConnection(connectionUrl, userId, "");
                 deviceManager = new DBDevice(connection);
                 session.setAttribute("deviceManager", deviceManager);
             } catch (ClassNotFoundException | SQLException ex) {

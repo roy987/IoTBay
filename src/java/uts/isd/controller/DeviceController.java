@@ -24,7 +24,7 @@ public class DeviceController extends HttpServlet {
     public void init() throws ServletException {
         try {
             // Initialize the database connection and DAO
-            Connection conn = DriverManager.getConnection("jdbc:yourdatabaseurl", "username", "password");
+            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/devicedb", "username", "password");
             dbDevice = new DBDevice(conn);
         } catch (SQLException e) {
             throw new ServletException("Unable to initialize database connection", e);

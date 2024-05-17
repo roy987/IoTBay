@@ -82,6 +82,10 @@
                   <label for="deviceID">Device ID:</label>
                   <input type="number" class="device-field" name="deviceID" placeholder="Enter Device ID">
                 </div>
+                <div class="form-group pb-4">
+                  <label for="deviceID">Device Category:</label>
+                  <input type="text" class="device-field" name="deviceCategory" placeholder="Enter Device Category">
+                </div>
                 <button type="submit" class="btn btn-primary ">Submit</button>
             </form>
         </div>

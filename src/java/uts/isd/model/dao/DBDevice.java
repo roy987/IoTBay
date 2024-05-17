@@ -160,12 +160,16 @@ public class DBDevice {
     }
     
     // Delete - Delete a single product
-    public void deleteDevice(String id) throws SQLException {
+    public void deleteDevice(int id) throws SQLException {
         String query = "DELETE FROM APP.DEVICES WHERE DEVICEID =" + id;
         st.executeUpdate(query);
     }
 
     public void updatedevice(int deviceID, String deviceName, String deviceCategory, String deviceBrand, float devicePrice, int deviceQuantity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void updateDevice(int deviceId, String deviceName, String deviceCategory, String deviceBrand, float devicePrice, int deviceQuantity) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
