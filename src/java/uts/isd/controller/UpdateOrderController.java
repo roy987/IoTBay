@@ -29,18 +29,17 @@ public class UpdateOrderController extends HttpServlet {
         String action = request.getParameter("action");
         int orderID = Integer.parseInt(request.getParameter("orderID"));
         int productID = Integer.parseInt(request.getParameter("productID"));
-        int shipmentID = Integer.parseInt(request.getParameter("shipmentMethod"));
         int paymentID = Integer.parseInt(request.getParameter("paymentMethod"));
 
         try {
             if ("save".equals(action)) {
                 // Code to save the order with status "pending"
-                manager.updateOrder(orderID, email, "Pending", productID, shipmentID, paymentID);
+                manager.updateOrder(orderID, email, "Pending", productID, paymentID);
             } else if ("submit".equals(action)) {
                 // Code to submit the order with status "shipping"
                 manager.decrementProductStock(productID);
 
-                manager.updateOrder(orderID, email, "Shipping", productID, shipmentID, paymentID);
+                manager.updateOrder(orderID, email, "Shipping", productID, paymentID);
                 
             }
             response.sendRedirect("updateOrderSuccess.jsp");

@@ -168,13 +168,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <div class="section">
-                        <h2 class="section-title">Shipment Method</h2>
-                        <select class="form-control" name="shipmentMethod">
-                            <option value="1" <% if (order != null && order.getShipmentID() == 1) out.print("selected"); %>>Standard Delivery</option>
-                            <option value="2" <% if (order != null && order.getShipmentID() == 2) out.print("selected"); %>>Express Delivery</option>
-                        </select>
-                    </div>
+      
                     <div class="section">
                         <h2 class="section-title">Payment Method</h2>
                         <select class="form-control" name="paymentMethod">

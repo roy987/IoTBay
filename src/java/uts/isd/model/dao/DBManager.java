@@ -196,8 +196,8 @@ public class DBManager {
         st.executeUpdate(query);
     }
 
-    public void updateOrder(int orderID, String email, String orderStatus, int productID, int shipmentID, int paymentID) throws SQLException {
-        String query = "UPDATE orders SET email = '" + email + "', orderStatus = '" + orderStatus + "', productID = " + productID + ", shipmentID = " + shipmentID + ", paymentID = " + paymentID + " WHERE orderID = " + orderID;
+    public void updateOrder(int orderID, String email, String orderStatus, int productID, int paymentID) throws SQLException {
+        String query = "UPDATE orders SET email = '" + email + "', orderStatus = '" + orderStatus + "', productID = " + productID + ", paymentID = " + paymentID + " WHERE orderID = " + orderID;
         st.executeUpdate(query);
     }
 
