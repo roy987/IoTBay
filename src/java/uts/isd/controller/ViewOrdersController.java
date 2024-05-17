@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import uts.isd.model.Order;
 import uts.isd.model.Product;
+import uts.isd.model.ShippingModel;
 import uts.isd.model.User;
 import uts.isd.model.dao.DBManager;
 
@@ -52,5 +53,21 @@ public class ViewOrdersController extends HttpServlet {
             Logger.getLogger(ViewOrdersController.class.getName()).log(Level.SEVERE, null, ex);
             // Handle exception
         }
+        
+        //shipment logic to display details
+            ShippingModel shippingModel = (ShippingModel) session.getAttribute("shippingModel");
+
+            if (shippingModel != null) {
+                request.setAttribute("shippingModel", shippingModel);
+            } else {
+                request.setAttribute("shippingModel", null);
+            }
+
+            if (user == null) {
+                // Redirect to login page if user is not logged in
+                response.sendRedirect("login.jsp");
+                return;
+            }
+        
     }
 }

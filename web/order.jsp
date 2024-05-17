@@ -6,6 +6,8 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@page import="uts.isd.model.Product"%>
+<%@page import="uts.isd.model.ShippingModel"%>
+
 
 <!DOCTYPE html>
 <html>
@@ -36,6 +38,7 @@
             }
             .section {
                 margin-top: 20px;
+                text-align: center;
             }
 
             .section-title {
@@ -61,6 +64,18 @@
                 border: none;
                 width: 75px;
 
+            }
+            
+            .addButton {
+                margin-top: 30px;
+            }
+            .addButton a {
+                color: blue;
+                padding: 10px 15px;
+                margin: 0 10px;
+                border: 1px solid blue;
+                border-radius: 5px;
+                text-decoration: none;
             }
             
         </style>
@@ -142,13 +157,27 @@
                             </tbody>
                         </table>
                     </div>
+                            
+                    
+
                     <div class="section">
-                        <h2 class="section-title">Shipment Method</h2>
-                        <select class="form-control" name="shipmentMethod">
-                            <option value="1">Standard Delivery</option>
-                            <option value="2">Express Delivery</option>
-                        </select>
+                        <h2 class="section-title">Shipping Details</h2>
+                        <%
+                            ShippingModel shippingModel = (ShippingModel) session.getAttribute("shippingModel");
+                            if (shippingModel != null) {
+                                out.println("<p>Shipping Method: " + shippingModel.getMethod() + "</p>");
+                                out.println("<p>Shipping Address: " + shippingModel.getAddress() + "</p>");
+                                out.println("<p>Delivery Date: " + shippingModel.getDate() + "</p>");
+                            } else {
+                                out.println("<p>No details saved</p>");
+                            }
+                        %>
+                    
+                        <div class="addButton">
+                            <a href="./shippingAdd.jsp">Edit Details</a>
+                        </div>
                     </div>
+                        
                     <div class="section">
                         <h2 class="section-title">Payment Method</h2>
                         <select class="form-control" name="paymentMethod">

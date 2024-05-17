@@ -39,7 +39,7 @@ public class StartOrderController extends HttpServlet {
             // Store orders in request attribute
             request.setAttribute("product", product);
             // Forward to orders.jsp for rendering
-            request.getRequestDispatcher("order.jsp").forward(request, response);
+            response.sendRedirect("order.jsp");
 
         } catch (SQLException ex) {
             Logger.getLogger(StartOrderController.class.getName()).log(Level.SEVERE, null, ex);

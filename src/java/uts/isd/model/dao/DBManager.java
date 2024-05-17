@@ -55,7 +55,8 @@ public class DBManager {
         String query = "UPDATE users SET name = '" + name + "', password = '" + password + "', phone = '" + phone + "' WHERE email = '" + email + "'";
         st.executeUpdate(query);
     }
-    
+   
+
 
 
     public void addLogLogin(String email) throws SQLException {
