@@ -153,6 +153,10 @@
         <servlet-name>EditDeviceController</servlet-name>
         <url-pattern>/EditDeviceController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeviceListController</servlet-name>
+        <url-pattern>/DeviceListController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
     </session-config>
