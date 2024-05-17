@@ -40,31 +40,33 @@
         </style>
     </head>
     
-    <body>
-        <!-- Header section for the registration page -->
-        <div class="header">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <a class="navbar-brand" href="./main.jsp">IoTBay</a>
-                <div class="d-flex justify-content-between w-100">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item ">
-                                <a class="nav-link" href="login.jsp">Login </a>
-                        </li>
+    <%@page import="uts.isd.model.User"%>
+<%
+    User user = (User) session.getAttribute("user");
+    String home = "index.jsp";
+    
+    if (user != null) {
+        home = "main.jsp";
+    }
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="registerStaff.jsp">Register (Staff)</a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="registerCustomer.jsp">Register (Customer)</a>
-                        </li>
-                        
-             
+%>
+<body>
+<div class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href=<%=home%>>IoTBay</a>
+            <div class="d-flex justify-content-between w-100">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="DeviceList.jsp">Device List</a>
+                        <a class="nav-link" href="login.jsp">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registerStaff.jsp">Register (Staff)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registerCustomer.jsp">Register (Customer)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="DeviceListController">Device List</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="FindDevice.jsp">Search Device</a>
@@ -72,11 +74,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="EditDevice.jsp">Manage Devices</a>
                     </li>
-                    
-                    </ul>
-                </div>
-            </nav>
-        </div>
+                </ul>
+            </div>
+        </nav>
+    </div>
         
         <% if (session.getAttribute("registerErr") != null) { %>
             <p><%= session.getAttribute("registerErr") %></p>

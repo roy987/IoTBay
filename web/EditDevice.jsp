@@ -17,36 +17,55 @@
     <title>Edit Device</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .title {
-            font-weight: bold;
-            font-size: 40px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-        }
-        .details {
-            margin-top: 50px;
-            font-size: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: left; 
-        }
-        label {
-            width: 150px; 
-            display: inline-block;
-        }
-        .terms-label {
-            width: auto; 
-            white-space: nowrap; 
-            margin-right: 10px; 
-        }
+            .title {
+                font-weight: bold;
+                font-size: 40px;
+                text-align: center;
+                display: flex;
+                align-items: center;
+            }
+            .details {
+                margin-top: 50px;
+                font-size: 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: left; 
+            }
+            label {
+                width: 150px; 
+                display: inline-block;
+            }
+            .terms-label {
+                width: auto; 
+                white-space: nowrap; 
+                margin-right: 10px; 
+            }
+            .navbar{
+            padding: 20px;
+            }
+            .navbar-brand{
+                font-size: 30px;
+            }
+            .content{
+                padding: 15px;
+            }
     </style>
 </head>
+<%@page import="uts.isd.model.User"%>
+<%
+    User user = (User) session.getAttribute("user");
+    String home = "index.jsp";
+    
+    if (user != null) {
+        home = "main.jsp";
+    }
+
+%>
 <body>
     <div class="header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="./index.jsp">IoTBay</a>
+            <a class="navbar-brand" href=<%=home%>>IoTBay</a>
             <div class="d-flex justify-content-between w-100">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
@@ -59,7 +78,7 @@
                         <a class="nav-link" href="registerCustomer.jsp">Register (Customer)</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="DeviceList.jsp">Device List</a>
+                        <a class="nav-link" href="DeviceListController">Device List</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="FindDevice.jsp">Search Device</a>

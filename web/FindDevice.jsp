@@ -33,47 +33,58 @@
                 white-space: nowrap; 
                 margin-right: 10px; 
             }
+            .navbar{
+            padding: 20px;
+            }
+            .navbar-brand{
+                font-size: 30px;
+            }
+            .content{
+                padding: 15px;
+            }
         </style>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title> Find Device </title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     </head>
-    <body>
-    <div class="header">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-                <a class="navbar-brand" href="./index.jsp">IoTBay</a>
-                <div class="d-flex justify-content-between w-100">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item ">
-                                <a class="nav-link" href="login.jsp">Login </a>
-                        </li>
+<%@page import="uts.isd.model.User"%>
+<%
+    User user = (User) session.getAttribute("user");
+    String home = "index.jsp";
+    
+    if (user != null) {
+        home = "main.jsp";
+    }
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="registerStaff.jsp">Register (Staff)</a>
-                        </li>
-
-                        <li class="nav-item dropdown">
-                        </li>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="registerCustomer.jsp">Resister (Customer)</a>
-                        </li>
-                        
-                        <li class ="nav-item">
-                            <a class="nav-link" href="DeviceList.jsp">Device List</a>
-                        </li>
-                        
-                        <li class ="nav-item">
-                            <a class="nav-link" href="FindDevice.jsp">Search Device</a>
-                        </li>
-                        
-                        <li class="nav-item">
+%>
+<body>
+  <div class="header">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href=<%=home%>>IoTBay</a>
+            <div class="d-flex justify-content-between w-100">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.jsp">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registerStaff.jsp">Register (Staff)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="registerCustomer.jsp">Register (Customer)</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="DeviceListController">Device List</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="FindDevice.jsp">Search Device</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="EditDevice.jsp">Manage Devices</a>
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
     </body>     
         <div class ="container my-3">
             <p class="display-6">Find Device</p>

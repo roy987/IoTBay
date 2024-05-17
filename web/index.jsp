@@ -51,7 +51,7 @@
                         </li>
                         
                         <li class ="nav-item">
-                            <a class="nav-link" href="DeviceList.jsp">Device List</a>
+                            <a class="nav-link" href="DeviceListController">Device List</a>
                         </li>
                         
                         <li class ="nav-item">

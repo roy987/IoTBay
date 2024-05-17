@@ -47,29 +47,52 @@
         }
     </style>
 </head>
+<%@page import="uts.isd.model.User"%>
+<%
+    User user = (User) session.getAttribute("user");
+    String home = "index.jsp";
+    
+    if (user != null) {
+        home = "main.jsp";
+    }
+
+%>
 <body>
     <div class="header">
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-            <a class="navbar-brand" href="./main.jsp">IoTBay</a>
+            <a class="navbar-brand" href=<%=home%>>IoTBay</a>
             <div class="d-flex justify-content-between w-100">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item ">
-                            <a class="nav-link" href="LogoutController">Logout </a>
+                    <li class="nav-item">
+                        <a class="nav-link" href="products.jsp">Products</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="manageUser.jsp">Manage User</a>
+                        <a class="nav-link" href="orders.jsp">Orders</a>
                     </li>
-
-                    <li class="nav-item dropdown">
+                    <li class="nav-item">
+                        <a class="nav-link" href="payment_1.jsp">Payment</a>
                     </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="shippingMain.jsp">Shipping</a>
+                    </li>   
 
+
+                </ul>
+
+                <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="UserLogsController">View Logs</a>
                     </li>
-                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="manageUser.jsp">Manage Account</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="LogoutController">Logout</a>
+                    </li>
                     <li class ="nav-item">
-                         <a class="nav-link" href="DeviceList.jsp">Device List</a>
+                         <a class="nav-link" href="DeviceListController">Device List</a>
                     </li>
                         
                     <li class ="nav-item">
