@@ -1,14 +1,24 @@
 package uts.isd.model;
 
+
 public class ShippingModel {
+    private int shippingID;
     private String address;
     private String method;
     private String date;
 
-    public ShippingModel(String address, String method, String date) {
+    public ShippingModel(int shippingID, String address, String method, String date) {
         this.address = address;
         this.method = method;
         this.date = date;
+    }
+    
+    public int getShippingID() {
+        return shippingID;
+    }
+
+    public void setShippingID(int shippingID) {
+        this.shippingID = shippingID;
     }
 
     public String getAddress() {

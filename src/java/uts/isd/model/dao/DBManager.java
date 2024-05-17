@@ -8,7 +8,10 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import uts.isd.model.Order;
+import uts.isd.model.Payment;
+import uts.isd.model.PaymentDetails;
 import uts.isd.model.Product;
+import uts.isd.model.ShippingModel;
 
 
 /* 
@@ -306,25 +309,34 @@ public class DBManager {
 
     return payments;
     }
-
     
-    public List<PaymentDetails> getPayDetails(String userEmail) throws SQLException {
-    List<PaymentDetails> payDetails = new ArrayList<>();
-    String query = "SELECT * FROM paydetails WHERE email = '" + userEmail + "'";
+    public void createShipping(String address, String methodType, String date) throws SQLException {
+        String query = "INSERT INTO orders (address, methodType, date) VALUES ('" + address + "', '" + methodType + "', " + date + ",)";
+        st.executeUpdate(query);
+    }
+    
+    public void updateShipping (String address, String methodType, String date) throws SQLException {
+        String query = "UPDATE ShippingDetails SET address = '" + address + "', methodType = '" + methodType + "' WHERE shippingDate = '" + date + "'";
+        st.executeUpdate(query);
+    }
+    
+    public List<ShippingModel> getShippingModel(String userEmail) throws SQLException {
+    List<ShippingModel> shippingDetails = new ArrayList<>();
+    String query = "SELECT * FROM shippingDetails";
     ResultSet rs = st.executeQuery(query);
 
     while (rs.next()) {
-        String cardNumber = rs.getString("cardNumber");
-        String cardName = rs.getString("cardName");
-        String expiryDate = rs.getString("expiryDate");
-        String cvv = rs.getString("cvv");
-        String email = rs.getString("email");
+                    int shippingID = rs.getInt("shippingID");
 
-        PaymentDetails paymentDetails = new PaymentDetails(cardNumber, cardName, expiryDate, cvv, email);
-        payDetails.add(paymentDetails);
+        String address = rs.getString("address");
+        String methodType = rs.getString("methodType");
+        String shippingDate = rs.getString("shippingDate");
+
+        ShippingModel shippingModel = new ShippingModel(shippingID, address, methodType,shippingDate );
+        shippingDetails.add(shippingModel);
     }
 
-    return payDetails;
+    return shippingDetails;
     }
     
     // Create payment details in the database

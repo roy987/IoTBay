@@ -174,7 +174,7 @@
                         %>
                     
                         <div class="addButton">
-                            <a href="./shippingAdd.jsp">Edit Details</a>
+                            <a href="./shippingEditAdd.jsp">Edit Details</a>
                         </div>
                     </div>
                         

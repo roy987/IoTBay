@@ -147,7 +147,7 @@
                         <c:forEach var="shipment" items="${pastShipmentsList}">
                             <tr>
                                 <td>${shipment.shippingID}</td>
-                                <td>${shipment.method}</td>
+                                <td>${shipment.methodz}</td>
                                 <td>${shipment.dateShipped}</td>
                             </tr>
                         </c:forEach>

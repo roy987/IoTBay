@@ -106,7 +106,7 @@
                 <input type="hidden" id="action" name="action" value="save">
                 <button type="button" id="deleteButton" class="btn btn-danger" onclick="deleteShippingDetails()">Delete</button>
                 
-                <a href="./shippingMain.jsp" class="btn btn-secondary">Back</a>
+                <a href="./order.jsp" class="btn btn-secondary">Back</a>
             </div>
         </form>
     </div>
