@@ -18,6 +18,6 @@ VALUES
 (16,'MPU-6050 4-Digit 7-Segment Display','Navigation','HiLetGo Electronics',3.49,25),
 (17,'74HC595 Shift Register','Modules','MCIGICM',10.2,170),
 (18,'L293D Motor Driver','Motors','Adafruit',14.43,98),
-(19,'A4988 Stepper Driver','Motors','BIQU',3.07,98,),
+(19,'A4988 Stepper Driver','Motors','BIQU',3.07,98),
 (20,'4x4 Membrane Keypad with Arduino','modules','Songhe',2.61,170);
 
