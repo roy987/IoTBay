@@ -95,11 +95,11 @@
                             <a class="nav-link" href="ViewOrdersController">Orders</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Payment</a>
+                            <a class="nav-link" href="payment_1.jsp">Payment</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Shipment</a>
+                            <a class="nav-link" href="shippingMain.jsp">Shipment</a>
                         </li>
 
 
