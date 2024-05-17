@@ -88,7 +88,7 @@
     </body>     
         <div class ="container my-3">
             <p class="display-6">Find Device</p>
-            <form action="editDeviceController" method="POST">
+            <form action="EditDeviceController" method="POST">
                 <div class="form-group pb-4">
                   <label for="deviceID">Device ID:</label>
                   <input type="number" class="device-field" name="deviceID" placeholder="Enter Device ID">

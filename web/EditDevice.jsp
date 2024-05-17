@@ -96,7 +96,7 @@
             List<Device> devices = null;
             try {
                 String driverName = "org.apache.derby.jdbc.ClientDriver";
-                String connectionUrl = "jdbc:derby://localhost:1527/devicedb";
+                String connectionUrl = "jdbc:derby://localhost:1527/iotbay";
                 String userId = "APP";
                 String password = "APP"; // Add your database password here
 
