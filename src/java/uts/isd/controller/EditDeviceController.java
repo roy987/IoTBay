@@ -21,6 +21,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import uts.isd.model.User;
+import uts.isd.model.dao.DBManager;
 
 
 /**
@@ -36,31 +38,34 @@ public class EditDeviceController extends HttpServlet {
         // get session
         HttpSession session = request.getSession();
 
-        DBDevice deviceManager = (DBDevice) session.getAttribute("deviceManager");
-        if (deviceManager == null) {
-            // Initialize the database connection and DAO
-            try {
-                String driverName = "org.apache.derby.jdbc.ClientDriver";
-                String connectionUrl = "jdbc:derby://localhost:1527/devicedb";
-                String userId = "APP";
-                
-                Class.forName(driverName);
-                Connection connection = DriverManager.getConnection(connectionUrl, userId, "");
-                deviceManager = new DBDevice(connection);
-                session.setAttribute("deviceManager", deviceManager);
-            } catch (ClassNotFoundException | SQLException ex) {
-                Logger.getLogger(EditDeviceController.class.getName()).log(Level.SEVERE, null, ex);
-                throw new ServletException("Database connection problem", ex);
-            }
-        }
-        
+//        DBDevice deviceManager = (DBDevice) session.getAttribute("deviceManager");
+//        if (deviceManager == null) {
+//            // Initialize the database connection and DAO
+//            try {
+//                String driverName = "org.apache.derby.jdbc.ClientDriver";
+//                String connectionUrl = "jdbc:derby://localhost:1527/iotdb";
+//                String userId = "APP";
+//                
+//                Class.forName(driverName);
+//                Connection connection = DriverManager.getConnection(connectionUrl, userId, "");
+//                deviceManager = new DBDevice(connection);
+//                session.setAttribute("deviceManager", deviceManager);
+//            } catch (ClassNotFoundException | SQLException ex) {
+//                Logger.getLogger(EditDeviceController.class.getName()).log(Level.SEVERE, null, ex);
+//                throw new ServletException("Database connection problem", ex);
+//            }
+//        }
+        DBManager manager = (DBManager) session.getAttribute("manager");
+//               User user = (User) session.getAttribute("user");
+
+
         int deviceID = Integer.parseInt(request.getParameter("deviceID"));
         
         try {
-            Device device = deviceManager.findDevice(deviceID);
+            Device device = manager.findDevice(deviceID);
             if (device != null) {
                 session.setAttribute("device", device);
-                request.getRequestDispatcher("devices.jsp").forward(request, response);
+                request.getRequestDispatcher("Devices.jsp").forward(request, response);
             } else {
                 request.setAttribute("message", "Device not found");
                 request.getRequestDispatcher("FindDevice.jsp").forward(request, response);

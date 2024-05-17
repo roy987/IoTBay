@@ -73,6 +73,10 @@
         <servlet-name>LoadUpdateController</servlet-name>
         <servlet-class>uts.isd.controller.LoadUpdateController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditDeviceController</servlet-name>
+        <servlet-class>uts.isd.controller.EditDeviceController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -140,6 +144,10 @@
     <servlet-mapping>
         <servlet-name>DeleteDeviceController</servlet-name>
         <url-pattern>/DeleteDeviceController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditDeviceController</servlet-name>
+        <url-pattern>/EditDeviceController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>
