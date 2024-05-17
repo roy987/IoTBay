@@ -160,23 +160,6 @@
                             
                     
 
-                    <div class="section">
-                        <h2 class="section-title">Shipping Details</h2>
-                        <%
-                            ShippingModel shippingModel = (ShippingModel) session.getAttribute("shippingModel");
-                            if (shippingModel != null) {
-                                out.println("<p>Shipping Method: " + shippingModel.getMethod() + "</p>");
-                                out.println("<p>Shipping Address: " + shippingModel.getAddress() + "</p>");
-                                out.println("<p>Delivery Date: " + shippingModel.getDate() + "</p>");
-                            } else {
-                                out.println("<p>No details saved</p>");
-                            }
-                        %>
-                    
-                        <div class="addButton">
-                            <a href="./shippingAdd.jsp">Edit Details</a>
-                        </div>
-                    </div>
                         
                     <div class="section">
                         <h2 class="section-title">Payment Method</h2>

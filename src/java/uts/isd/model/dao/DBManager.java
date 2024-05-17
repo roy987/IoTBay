@@ -190,8 +190,8 @@ public class DBManager {
         return orders;
     }    
     
-    public void createOrder(String email, String orderStatus, int productID, int shipmentID, int paymentID) throws SQLException {
-        String query = "INSERT INTO orders (email, orderStatus, productID, paymentID, shipmentID) VALUES ('" + email + "', '" + orderStatus + "', " + productID + ", " + paymentID + ", " + shipmentID + ")";
+    public void createOrder(String email, String orderStatus, int productID, int paymentID) throws SQLException {
+        String query = "INSERT INTO orders (email, orderStatus, productID, paymentID) VALUES ('" + email + "', '" + orderStatus + "', " + productID + ", " + paymentID + ")";
         st.executeUpdate(query);
     }
 

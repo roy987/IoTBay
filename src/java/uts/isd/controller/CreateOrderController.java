@@ -28,20 +28,19 @@ public class CreateOrderController extends HttpServlet {
         String email = user.getEmail();
         String action = request.getParameter("action");
         int productID = Integer.parseInt(request.getParameter("productID"));
-        int shipmentID = Integer.parseInt(request.getParameter("shipmentMethod"));
         int paymentID = Integer.parseInt(request.getParameter("paymentMethod"));
 
         try {
             if ("save".equals(action)) {
                 // Code to save the order with status "pending"
-                manager.createOrder(email, "Pending", productID, shipmentID, paymentID);
+                manager.createOrder(email, "Pending", productID, paymentID);
             } else if ("submit".equals(action)) {
                 // Code to submit the order with status "shipping"
                 manager.decrementProductStock(productID);
 
-                manager.createOrder(email, "Shipping", productID, shipmentID, paymentID);
+                manager.createOrder(email, "Shipping", productID, paymentID);
             }
-            response.sendRedirect("orderSuccess.jsp");
+            response.sendRedirect("shippingEdit.jsp");
             // Forward to orders.jsp for rendering
 
         } catch (SQLException ex) {
