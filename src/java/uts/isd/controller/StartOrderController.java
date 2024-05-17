@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import uts.isd.model.Product;
@@ -20,25 +19,26 @@ public class StartOrderController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-//        if (user == null) {
-//            // Redirect to login page if user is not logged in
-//            response.sendRedirect("login.jsp");
-//            return;
-//        }
+        
+        if (user == null) {
+            // Redirect to login page if user is not logged in
+            response.sendRedirect("login.jsp");
+            return;
+        }
+
         int productID = Integer.parseInt(request.getParameter("productID"));
-
-
+        
         // Retrieve the manager instance from session      
         DBManager manager = (DBManager) session.getAttribute("manager");
-        String email = user.getEmail();
 
         try {
-            // Fetch orders from the database
+            // Fetch product details from the database
             Product product = manager.getProductDetails(productID);
-            System.out.println("product: " + product);
-            // Store orders in request attribute
-            request.setAttribute("product", product);
-            // Forward to orders.jsp for rendering
+            
+            // Store product in session attribute
+            session.setAttribute("product", product);
+            
+            // Redirect to order.jsp
             response.sendRedirect("order.jsp");
 
         } catch (SQLException ex) {

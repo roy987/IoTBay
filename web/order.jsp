@@ -137,8 +137,8 @@
                             </thead>
                             <tbody>
                                 <%
-                                    Product product = (Product) request.getAttribute("product");
-                                    if (product != null) {
+
+                                    Product product = (Product) session.getAttribute("product");                                    if (product != null) {
                                 %>
                                 <tr>
                                     <td><%= product.getProductID() %></td>
