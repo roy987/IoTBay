@@ -3,20 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Roy/Desktop/IoTBay/web/main.jsp</file>
-            <file>file:/C:/Users/Roy/Desktop/IoTBay/web/index.jsp</file>
-            <file>file:/C:/Users/Roy/Desktop/IoTBay/web/one.jsp</file>
-=======
-            <file>file:/Users/jakesolsky/NetBeansProjects/IoTBay/web/paymentupdatedelete.jsp</file>
-            <file>file:/Users/jakesolsky/NetBeansProjects/IoTBay/src/java/uts/isd/model/ShippingModel.java</file>
-            <file>file:/Users/jakesolsky/NetBeansProjects/IoTBay/src/java/uts/isd/controller/ViewProductsController.java</file>
-            <file>file:/Users/jakesolsky/NetBeansProjects/IoTBay/web/payment_1.jsp</file>
-            <file>file:/Users/jakesolsky/NetBeansProjects/IoTBay/src/java/uts/isd/controller/ViewOrdersController.java</file>
-            <file>file:/Users/jakesolsky/NetBeansProjects/IoTBay/web/paymentcreate.jsp</file>
-            <file>file:/Users/jakesolsky/NetBeansProjects/IoTBay/src/java/uts/isd/model/UserLog.java</file>
-            <file>file:/Users/jakesolsky/NetBeansProjects/IoTBay/src/java/uts/isd/controller/ShippingController.java</file>
->>>>>>> ac2f100 (integrating payments)
+            <file>file:/C:/Users/jyapr/Desktop/IoTBay/web/main.jsp</file>
+            <file>file:/C:/Users/jyapr/Desktop/IoTBay/web/index.jsp</file>
+            <file>file:/C:/Users/jyapr/Desktop/IoTBay/web/one.jsp</file>
         </group>
     </open-files>
 </project-private>

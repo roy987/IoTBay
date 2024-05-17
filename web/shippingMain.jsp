@@ -58,6 +58,40 @@
 </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<a class="navbar-brand" href="./main.jsp">IoTBay</a>
+<div class="d-flex justify-content-between w-100">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item">
+<a class="nav-link" href="#">Products</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">Orders</a>
+</li>
+<li class="nav-item dropdown">
+</li>
+<li class="nav-item">
+<a class="nav-link" href="shippingMain.jsp">Shipping</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">My Account</a>
+</li>
+</ul>
+<ul class="navbar-nav ml-auto">
+<li class="nav-item">
+<a class="nav-link" href="#">Logout</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="DeviceList.jsp">Device List</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="FindDevice.jsp">Search Device</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="EditDevice.jsp">Manage Devices</a>
+</ul>
+</div>
+</nav>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <a class="navbar-brand" href="./main.jsp">IoTBay</a>

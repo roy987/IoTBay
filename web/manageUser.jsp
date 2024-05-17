@@ -91,6 +91,10 @@
                     <li class="nav-item">
                         <a class="nav-link" href="UserLogsController">View Logs</a>
                     </li>
+                    
+                    <li class="nav-item">
+                        <a class="nav-link" href="EditDevice.jsp">Manage Devices</a>
+                    </li>
                 </ul>
             </div>
         </nav>

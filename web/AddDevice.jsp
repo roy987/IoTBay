@@ -1,17 +1,15 @@
 <%-- 
-    Document   : login
-    Created on : 5 Apr 2024, 2:39:18 pm
-    Author     : jakesolsky
+    Document   : AddDevice
+    Created on : 15 May 2024, 10:31:31 am
+    Author     : caitlinbaker
 --%>
 
-<%@ page import="uts.isd.model.User" %>
-<%@ page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Login page</title>
+        <title>Add Device</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
         <style>
             .title {
@@ -40,7 +38,6 @@
             }
         </style>
     </head>
-    
     <body>
         <div class="header">
             <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -59,7 +56,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="registerCustomer.jsp">Register (Customer)</a>
+                            <a class="nav-link" href="registerCustomer.jsp">Resister (Customer)</a>
                         </li>
                         
                         <li class ="nav-item">
@@ -77,26 +74,39 @@
                 </div>
             </nav>
         </div>
-        <div class="content">
-                <%-- Check for errors in session and display them --%>
-            <% if (session.getAttribute("loginErr") != null) { %>
-                <p><%= session.getAttribute("loginErr") %></p>
-            <% } %>
-            
-            <div class="title">Login</div>
-
-            <!-- Form section for user login -->
-            <div class="details">
-                <form action="LoginController" method="post">
-                    <label>Email: </label>
-                        <input name="email"></input><br>
-                        <br>
-                    <label>Password: </label>
-                        <input name="password" type="password"></input><br>
-                        <br>
-                    <input type="submit" value="login">
-                <form/>
+        <div class ="container my-3">
+            <div class ="table-responsive">
+                <table class="table table-sm table-bordered">
+                    <p class="display-6">Device</p>
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Brand</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td> <input class='add-device' type="text" placeholder="Enter DeviceID" name="deviceID" > </td>                        <td> <input class='add-product' type="text" placeholder="Enter Serial_Num" name="serialNum" > </td>
+                        <td> <input class='add-device' type="text" placeholder="Enter DeviceName" name="device_name" > </td>
+                        <td> <input class='add-device' type="text" placeholder="Enter Category" name="category" > </td>
+                        <td> <input class='add-device' type="text" placeholder="Enter Brand" name="brand" > </td>
+                        <td> <input class='add-device' type="text" placeholder="Enter Price" name="price" > </td>
+                        <td> <input class='add-device' type="text" placeholder="Enter Quantity" name="quantity" > </td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="btn-container" style="margin-top: 0.5cm">
+                <button type="submit" class="add-device btn btn-outline-secondary btn-lg">Add</button>
             </div>
         </div>
+    
+    
+    
     </body>
+    
 </html>

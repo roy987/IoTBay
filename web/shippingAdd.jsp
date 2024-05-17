@@ -75,6 +75,14 @@
 <li class="nav-item">
 <a class="nav-link" href="#">Logout</a>
 </li>
+<li class="nav-item">
+<a class="nav-link" href="DeviceList.jsp">Device List</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="FindDevice.jsp">Search Device</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" href="EditDevice.jsp">Manage Devices</a>
 </ul>
 </div>
 </nav>
