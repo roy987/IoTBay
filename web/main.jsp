@@ -89,7 +89,7 @@
                         <a class="nav-link" href="orders.jsp">Orders</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Payment</a>
+                        <a class="nav-link" href="payment_1.jsp">Payment</a>
                     </li>
                     
                     <li class="nav-item">
