@@ -284,7 +284,48 @@ public class DBManager {
             throw new SQLException("Product not found for productID: " + productID);
         }
     }
+    
+    public List<Payment> getAllPayments(String userEmail) throws SQLException {
+    List<Payment> payments = new ArrayList<>();
+    String query = "SELECT * FROM payment WHERE email = '" + userEmail + "'";
+    ResultSet rs = st.executeQuery(query);
 
+    while (rs.next()) {
+        String paymentID = rs.getString("paymentID");
+        String cardNumber = rs.getString("cardNumber");
+        String cardName = rs.getString("cardName");
+        String expiryDate = rs.getString("expiryDate");
+        String cvv = rs.getString("cvv");
+        String orderID = rs.getString("orderID");
+        String email = rs.getString("email");
+
+        PaymentDetails paymentDetails = new PaymentDetails(cardNumber, cardName, expiryDate, cvv, email);
+        Payment payment = new Payment(paymentID, paymentDetails, orderID);
+        payments.add(payment);
+    }
+
+    return payments;
+    }
+
+    
+    public List<PaymentDetails> getPayDetails(String userEmail) throws SQLException {
+    List<PaymentDetails> payDetails = new ArrayList<>();
+    String query = "SELECT * FROM paydetails WHERE email = '" + userEmail + "'";
+    ResultSet rs = st.executeQuery(query);
+
+    while (rs.next()) {
+        String cardNumber = rs.getString("cardNumber");
+        String cardName = rs.getString("cardName");
+        String expiryDate = rs.getString("expiryDate");
+        String cvv = rs.getString("cvv");
+        String email = rs.getString("email");
+
+        PaymentDetails paymentDetails = new PaymentDetails(cardNumber, cardName, expiryDate, cvv, email);
+        payDetails.add(paymentDetails);
+    }
+
+    return payDetails;
+    }
     
     // Create payment details in the database
     public void createPayment(String cardNumber, String cardName, String expiryDate, String cvv, String email) throws SQLException {
