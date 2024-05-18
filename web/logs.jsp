@@ -64,11 +64,11 @@
             <div class="d-flex justify-content-between w-100">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="products.jsp">Products</a>
+                        <a class="nav-link" href="ViewProductsController">Products</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="orders.jsp">Orders</a>
+                        <a class="nav-link" href="ViewOrdersController">Orders</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="payment_1.jsp">Payment</a>
