@@ -1,6 +1,21 @@
 INSERT INTO APP.USERS VALUES
 ('john123@mail.com', 'John', '12345', '145265585', '1'),
-('jeff123@mail.com', 'jeff', '12345', '145265586', '1'),
-('sally123@mail.com', 'sally', '12345', '145265523', '1'),
-('penelope123@mail.com', 'penelope', '12345', '145265595', '1'),
-('alex123@mail.com', 'alex', '12345', '14526558577', '0');
+('jeff123@mail.com', 'Jeff', '12345', '145265586', '1'),
+('sally123@mail.com', 'Sally', '12345', '145265523', '1'),
+('penelope123@mail.com', 'Penelope', '12345', '145265595', '1'),
+('MaisyMoo@mail.com', 'Maisy', 'passowrd', '14526551177', '0');
+('Tara1@uts.com', 'Tara', 'h177h!!', '482829391', '0');
+('RowanX1@mail.com', 'Rowan', 'afsfo001', '482938571', '0');
+('MaddieS@mail.com', 'Maddie', 'aii*711', '385849389', '1');
+('KianKik@outlook.com', 'Kian', 'll0101@p', '391249591', '1');
+('CaseyN@mail.com', 'Casey', 'shakepeare1!', '245236726', '0');
+('1Maria1@mail.com', 'Maria', 'qwerty123', '149959699', '1');
+('KatyPerry@mail.com', 'Katy', 'Qwerty12', '481059685', '1');
+('Annabel@work.com', 'Annabel', 'Mniaub@1', '757891945', '1');
+('WadeWilson@marvel.com', 'Wade', 'PPp0001a@', '485919585', '0');
+('Lucilles@Adamn.com', 'Lucille', 'fjjakii!!002', '591929585', '0');
+('Safa@mail.com', 'Safa', 'Yuo99()', '592592856', '1');
+('EsmeO@mail.com', 'Esme', '1jjau1$', '253925929', '1');
+('Lorenzo@popp.com', 'Lorenzo', '$$111$$$pp', '259269787', '1');
+('DerekD@mail.com', 'Derek', 'adaiiq888&', '770799583', '1');
+('Patrick@america.com', 'Patrick', 'A%6@Bg', '234686899', '1');
