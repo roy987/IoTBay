@@ -126,57 +126,19 @@ public class DBManager {
         return null;
         
     }
-//    
-//          // Find orders by email in the database
-//    public List<Order> findOrders(String email) throws SQLException {
-//    List<Order> orders = new ArrayList<>();
-//    String query = "SELECT * FROM ORDERS WHERE email = ?";
-//    PreparedStatement preparedStatement = st.getConnection().prepareStatement(query);
-//    preparedStatement.setString(1, email);
-//    ResultSet rs = preparedStatement.executeQuery();
-//
-//    while (rs.next()) {
-//        Order order = new Order(
-//            rs.getString("orderID"),
-//            rs.getString("date"),
-//            rs.getString("email"),
-//            rs.getString("orderStatus"),
-//            rs.getString("productName"),
-//            rs.getString("orderTotal")
-//        );
-//        orders.add(order);
-//    }
-//
-//    return orders;
-//}
-//
-//
-//    // Add a user-data into the database
-//    public void addOrder(String date, String email, String orderStatus, String productName, String orderTotal) throws SQLException {
-//        String query = "INSERT INTO orders (date, email, orderStatus, productName, orderTotal) VALUES ('" + date + "', '" + email + "', '" + orderStatus + "', '" + productName + "', '" + orderTotal + "')";
-//        st.executeUpdate(query);
-//    }
-//
-//    // Update a user details in the database
-//    public void updateOrder(String orderID, String date, String email, String orderStatus, String productName, String orderTotal) throws SQLException {
-//        String query = "UPDATE orders SET date = '" + date + "', email = '" + email + "', orderStatus = '" + orderStatus + "', productName = '" + productName + "', orderTotal = '" + orderTotal + "' WHERE orderID = '" + orderID + "'";
-//        st.executeUpdate(query);
-//    } 
-//
-//    // Delete a user from the database
-////    public void deleteOrder(String email) throws SQLException {
-////        String query = "DELETE FROM users WHERE email = '" + email + "'";
-////        st.executeUpdate(query);
-////    }
-//    
 
-    public List<Order> getAllOrders(String userEmail) throws SQLException {     
+    public List<Order> getAllOrders(String userEmail) throws SQLException {
+        // Initialize an empty list to hold the orders
         List<Order> orders = new ArrayList<>();
+
+        // SQL query to retrieve all orders for the given email
         String query = "SELECT * FROM orders WHERE email = '" + userEmail + "'";
+
+        // Execute the query and get the result set
         ResultSet rs = st.executeQuery(query);
 
+        // Iterate through the result set and create Order objects
         while (rs.next()) {
-               
             int orderID = rs.getInt("orderID");
             Date date = rs.getDate("date");
             String email = rs.getString("email");
@@ -185,55 +147,77 @@ public class DBManager {
             int paymentID = rs.getInt("paymentID");
             int shipmentID = rs.getInt("shipmentID");
 
+            // Create a new Order object and add it to the list
             Order order = new Order(orderID, date, email, orderStatus, productID, paymentID, shipmentID);
             orders.add(order);
         }
-        System.out.println(orders + "these are the orders g");
+
+        // Return the list of orders
         return orders;
-    }    
-    
+    }
+
     public void createOrder(String email, String orderStatus, int productID, int paymentID) throws SQLException {
+        // SQL query to insert a new order into the orders table
         String query = "INSERT INTO orders (email, orderStatus, productID, paymentID) VALUES ('" + email + "', '" + orderStatus + "', " + productID + ", " + paymentID + ")";
+
+        // Execute the update
         st.executeUpdate(query);
     }
 
     public void updateOrder(int orderID, String email, String orderStatus, int productID, int paymentID) throws SQLException {
+        // SQL query to update an existing order in the orders table
         String query = "UPDATE orders SET email = '" + email + "', orderStatus = '" + orderStatus + "', productID = " + productID + ", paymentID = " + paymentID + " WHERE orderID = " + orderID;
+
+        // Execute the update
         st.executeUpdate(query);
     }
 
     public void updateOrderStatus(int orderID, String newOrderStatus) throws SQLException {
+        // SQL query to update the order status of an existing order
         String query = "UPDATE orders SET orderStatus = '" + newOrderStatus + "' WHERE orderID = " + orderID;
+
+        // Execute the update
         st.executeUpdate(query);
     }
-    
+
     public Order getOrderByID(int orderID) throws SQLException {
         Order order = null;
+
+        // SQL query to retrieve an order by its ID
         String query = "SELECT * FROM orders WHERE orderID = " + orderID;
+
+        // Execute the query and get the result set
         ResultSet rs = st.executeQuery(query);
+
+        // If an order is found, create an Order object
         if (rs.next()) {
-            // Retrieve order details from the ResultSet
             String email = rs.getString("email");
             Date date = rs.getDate("date");
-
             String orderStatus = rs.getString("orderStatus");
             int productID = rs.getInt("productID");
             int shipmentID = rs.getInt("shipmentID");
             int paymentID = rs.getInt("paymentID");
 
-            // Create an Order object with retrieved details
+            // Create a new Order object with the retrieved details
             order = new Order(orderID, date, email, orderStatus, productID, shipmentID, paymentID);
         }
+
+        // Return the Order object
         return order;
     }
-    
-    
+
     public Product getProductFromDatabase(int productID) throws SQLException {
+        // SQL query to retrieve a product by its ID
         String query = "SELECT * FROM products WHERE productID = ?";
+
+        // Prepare the statement to prevent SQL injection
         PreparedStatement preparedStatement = st.getConnection().prepareStatement(query);
-        preparedStatement.setInt(1, productID); // Set int parameter
+        preparedStatement.setInt(1, productID); // Set the product ID parameter
+
+        // Execute the query and get the result set
         ResultSet rs = preparedStatement.executeQuery();
 
+        // If a product is found, create a Product object
         if (rs.next()) {
             Product product = new Product(
                     rs.getInt("productID"),
@@ -241,53 +225,78 @@ public class DBManager {
                     rs.getInt("stock"),
                     rs.getDouble("price")
             );
+
+            // Return the Product object
             return product;
         }
+
+        // Return null if no product is found
         return null;
     }
 
-
-    // Method to get product details based on productID
+// Method to get product details based on productID
     public Product getProductDetails(int productID) throws SQLException {
+        // Call the method to retrieve the product from the database
         return getProductFromDatabase(productID);
     }
+
     public List<Product> getAllProducts() throws SQLException {
+        // Initialize an empty list to hold the products
         List<Product> products = new ArrayList<>();
+
+        // SQL query to retrieve all products
         String query = "SELECT * FROM products";
+
+        // Execute the query and get the result set
         ResultSet rs = st.executeQuery(query);
 
+        // Iterate through the result set and create Product objects
         while (rs.next()) {
             Product product = new Product(
-                rs.getInt("productID"),
-                rs.getString("productName"),
-                rs.getInt("stock"),
-                rs.getDouble("price")
+                    rs.getInt("productID"),
+                    rs.getString("productName"),
+                    rs.getInt("stock"),
+                    rs.getDouble("price")
             );
+
+            // Add the Product object to the list
             products.add(product);
         }
 
+        // Return the list of products
         return products;
     }
+
     public void decrementProductStock(int productID) throws SQLException {
-        // Retrieve the current stock level of the product
+        // SQL query to retrieve the current stock level of the product
         String getStockQuery = "SELECT stock FROM products WHERE productID = " + productID;
+
+        // Execute the query and get the result set
         ResultSet rs = st.executeQuery(getStockQuery);
+
+        // If the product is found, check the stock level
         if (rs.next()) {
             int currentStock = rs.getInt("stock");
+
+            // If there is sufficient stock, decrement the stock by 1
             if (currentStock > 0) {
-                // Decrement the stock by 1
                 int newStock = currentStock - 1;
-                // Update the product record in the database
+
+                // SQL query to update the stock level of the product
                 String updateStockQuery = "UPDATE products SET stock = " + newStock + " WHERE productID = " + productID;
+
+                // Execute the update
                 st.executeUpdate(updateStockQuery);
             } else {
+                // Throw an exception if there is insufficient stock
                 throw new SQLException("Insufficient stock for productID: " + productID);
             }
         } else {
+            // Throw an exception if the product is not found
             throw new SQLException("Product not found for productID: " + productID);
         }
     }
-    
+
     public List<Payment> getAllPayments(String userEmail) throws SQLException {
     List<Payment> payments = new ArrayList<>();
     String query = "SELECT * FROM payment WHERE email = '" + userEmail + "'";

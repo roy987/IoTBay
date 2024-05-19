@@ -7,10 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import uts.isd.model.Product;
 import uts.isd.model.User;
 import uts.isd.model.dao.DBManager;
 
@@ -42,12 +40,11 @@ public class UpdateOrderController extends HttpServlet {
                 manager.updateOrder(orderID, email, "Shipping", productID, paymentID);
                 
             }
+            // Forward to updateOrderSuccess.jsp for rendering
             response.sendRedirect("updateOrderSuccess.jsp");
-            // Forward to orders.jsp for rendering
 
         } catch (SQLException ex) {
             Logger.getLogger(CreateOrderController.class.getName()).log(Level.SEVERE, null, ex);
-            // Handle exception
         }
     }
 }
