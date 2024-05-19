@@ -25,12 +25,12 @@ public class CancelOrderController extends HttpServlet {
         try {
             
             manager.updateOrderStatus(orderID, "Cancelled");
+            
+            // Forward to cancelOrderSuccess.jsp for rendering
             response.sendRedirect("cancelOrderSuccess.jsp");
-            // Forward to orders.jsp for rendering
 
         } catch (SQLException ex) {
             Logger.getLogger(CancelOrderController.class.getName()).log(Level.SEVERE, null, ex);
-            // Handle exception
         }
     }
 }

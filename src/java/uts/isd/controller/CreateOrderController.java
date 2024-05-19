@@ -7,10 +7,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import uts.isd.model.Product;
 import uts.isd.model.User;
 import uts.isd.model.dao.DBManager;
 
@@ -34,18 +32,22 @@ public class CreateOrderController extends HttpServlet {
             if ("save".equals(action)) {
                 // Code to save the order with status "pending"
                 manager.createOrder(email, "Pending", productID, paymentID);
+                
+                // Forward to orderSuccess.jsp for rendering              
+                response.sendRedirect("orderSuccess.jsp");
             } else if ("submit".equals(action)) {
                 // Code to submit the order with status "shipping"
                 manager.decrementProductStock(productID);
 
                 manager.createOrder(email, "Shipping", productID, paymentID);
+                
+                // Forward to shippingEdit.jsp for rendering              
+                response.sendRedirect("shippingEdit.jsp");
             }
-            response.sendRedirect("shippingEdit.jsp");
-            // Forward to orders.jsp for rendering
+
 
         } catch (SQLException ex) {
             Logger.getLogger(CreateOrderController.class.getName()).log(Level.SEVERE, null, ex);
-            // Handle exception
         }
     }
 }

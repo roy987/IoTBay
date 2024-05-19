@@ -77,7 +77,6 @@
         <%
             try {
                 DBManager manager = (DBManager) session.getAttribute("manager");
-                User user = (User) session.getAttribute("user");
 
                 if (manager != null && user != null) {
                     String email = user.getEmail();

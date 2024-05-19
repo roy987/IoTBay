@@ -7,7 +7,6 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import uts.isd.model.Order;
@@ -22,11 +21,7 @@ public class LoadUpdateController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-//        if (user == null) {
-//            // Redirect to login page if user is not logged in
-//            response.sendRedirect("login.jsp");
-//            return;
-//        }
+
         int orderID = Integer.parseInt(request.getParameter("orderID"));
         
 
@@ -49,7 +44,6 @@ public class LoadUpdateController extends HttpServlet {
 
         } catch (SQLException ex) {
             Logger.getLogger(StartOrderController.class.getName()).log(Level.SEVERE, null, ex);
-            // Handle exception
         }
     }
 }

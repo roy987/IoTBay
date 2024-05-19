@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import uts.isd.model.Product;
-import uts.isd.model.User;
 import uts.isd.model.dao.DBManager;
 
 public class StartOrderController extends HttpServlet {
@@ -18,14 +17,7 @@ public class StartOrderController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
-        
-        if (user == null) {
-            // Redirect to login page if user is not logged in
-            response.sendRedirect("login.jsp");
-            return;
-        }
-
+     
         int productID = Integer.parseInt(request.getParameter("productID"));
         
         // Retrieve the manager instance from session      
@@ -43,7 +35,6 @@ public class StartOrderController extends HttpServlet {
 
         } catch (SQLException ex) {
             Logger.getLogger(StartOrderController.class.getName()).log(Level.SEVERE, null, ex);
-            // Handle exception
         }
     }
 }

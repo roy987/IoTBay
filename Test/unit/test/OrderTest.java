@@ -40,8 +40,6 @@ public class OrderTest {
     }
     
 
-   
-
     @Test
     public void testUpdateOrderStatus() throws SQLException {
         int orderID = 1;  // Assume this orderID exists
