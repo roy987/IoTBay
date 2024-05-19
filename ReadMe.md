@@ -1,9 +1,9 @@
 Team:
-Caitlin Baker 14187001
-Jason Yap 24503854
-Roy Jacob 14258394
-Jacob Solsky 14263521
-Enoch Pei 24960003
+* Caitlin Baker 14187001
+* Jason Yap 24503854
+* Roy Jacob 14258394
+* Jacob Solsky 14263521
+* Enoch Pei 24960003
 
 
 Steps to deploy and run software + database:
