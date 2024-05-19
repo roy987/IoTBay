@@ -28,7 +28,7 @@ public class OrderTest {
 
     @Test
     public void testCreateOrder() throws SQLException {
-        String email = "test@example.com";
+        String email = "testnonemail";
         String orderStatus = "Pending";
         int productID = 1;
         int paymentID = 1;
@@ -38,11 +38,14 @@ public class OrderTest {
         List<Order> orders = dbManager.getAllOrders(email);
         assertFalse(orders.isEmpty());
     }
+    
+
+   
 
     @Test
     public void testUpdateOrderStatus() throws SQLException {
         int orderID = 1;  // Assume this orderID exists
-        String newOrderStatus = "Shipped";
+        String newOrderStatus = "Cancelled";
 
         dbManager.updateOrderStatus(orderID, newOrderStatus);
         Order order = dbManager.getOrderByID(orderID);
@@ -59,4 +62,25 @@ public class OrderTest {
         assertNotNull(order);
         assertEquals(orderID, order.getOrderID());
     }
+    
+    @Test
+    public void testGetAllOrders() throws SQLException {
+        String email = "john123@mail.com"; //Assume this email has >0 orders linked to it
+
+        List<Order> orders = dbManager.getAllOrders(email);
+        assertFalse(orders.isEmpty());
+    }
+    
+    @Test
+    public void testGetOrderStatus() throws SQLException {
+        String email = "john123@mail.com"; //Assume this email has >0 orders linked to it
+
+        List<Order> orders = dbManager.getAllOrders(email);
+        assertFalse(orders.isEmpty());
+        
+        for (Order order : orders) {
+            assertNotNull("Order status should not be null", order.getOrderStatus());
+        }
+    }
+
 }
