@@ -33,15 +33,21 @@ public class UpdateOrderController extends HttpServlet {
             if ("save".equals(action)) {
                 // Code to save the order with status "pending"
                 manager.updateOrder(orderID, email, "Pending", productID, paymentID);
+                
+                // Forward to updateOrderSuccess.jsp for rendering
+                response.sendRedirect("updateOrderSuccess.jsp");
+                
             } else if ("submit".equals(action)) {
                 // Code to submit the order with status "shipping"
                 manager.decrementProductStock(productID);
 
                 manager.updateOrder(orderID, email, "Shipping", productID, paymentID);
                 
+                // Forward to shippingEdit.jsp for rendering
+                response.sendRedirect("shippingEdit.jsp");
+                
             }
-            // Forward to updateOrderSuccess.jsp for rendering
-            response.sendRedirect("updateOrderSuccess.jsp");
+
 
         } catch (SQLException ex) {
             Logger.getLogger(CreateOrderController.class.getName()).log(Level.SEVERE, null, ex);
