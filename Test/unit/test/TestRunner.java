@@ -4,7 +4,8 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
-public class TestRunner {
+//TestRunner class for the shipping test files
+public class TestRunner { 
 
     public static void main(String[] args) {
         // Runs the ShippingModelTest
@@ -12,6 +13,12 @@ public class TestRunner {
         Result modelResult = JUnitCore.runClasses(ShippingModelTest.class);
 
         displayTestResults(modelResult);
+        
+        //Runs dbmanager tests
+        System.out.println("Testing Shipping Functions from DBManager:");
+        Result modelResult2 = JUnitCore.runClasses(ShippingDBTest.class);
+
+        displayTestResults(modelResult2);
     }
 
     private static void displayTestResults(Result result) {

@@ -12,6 +12,7 @@ import uts.isd.model.Order;
 import uts.isd.model.Product;
 import uts.isd.model.Payment;
 import uts.isd.model.PaymentDetails;
+import uts.isd.model.ShippingModel;
 
 /* 
 * DBManager is the primary DAO class to interact with the database. 
@@ -327,6 +328,36 @@ public class DBManager {
     }
 
     return payDetails;
+    }
+    
+    //shipping functions to insert, update and retrieve data from the database
+    public void createShipping(String address, String methodType, String date) throws SQLException {
+        String query = "INSERT INTO orders (address, methodType, date) VALUES ('" + address + "', '" + methodType + "', " + date + ",)";
+        st.executeUpdate(query);
+    }
+    
+    public void updateShipping (String address, String methodType, String date) throws SQLException {
+        String query = "UPDATE ShippingDetails SET address = '" + address + "', methodType = '" + methodType + "' WHERE shippingDate = '" + date + "'";
+        st.executeUpdate(query);
+    }
+    
+    public List<ShippingModel> getShippingModel() throws SQLException {
+    List<ShippingModel> shippingDetails = new ArrayList<>();
+    String query = "SELECT * FROM shippingDetails";
+    ResultSet rs = st.executeQuery(query);
+
+    while (rs.next()) {
+                    int shippingID = rs.getInt("shippingID");
+
+        String address = rs.getString("address");
+        String methodType = rs.getString("methodType");
+        String shippingDate = rs.getString("shippingDate");
+
+        ShippingModel shippingModel = new ShippingModel(address, methodType,shippingDate );
+        shippingDetails.add(shippingModel);
+    }
+
+    return shippingDetails;
     }
     
     // Create payment details in the database
