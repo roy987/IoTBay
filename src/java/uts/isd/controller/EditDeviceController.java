@@ -6,19 +6,13 @@ package uts.isd.controller;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import uts.isd.model.dao.DBDevice;
 import uts.isd.model.Device;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import uts.isd.model.User;
@@ -29,48 +23,80 @@ import uts.isd.model.dao.DBManager;
  *
  * @author caitlinbaker
  */
-@WebServlet("/editDevice") // This annotation makes this servlet available at the URL /editDevice
 public class EditDeviceController extends HttpServlet {
- 
-    @Override   
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        // get session
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("user") == null || !((User) session.getAttribute("user")).isStaff()) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
 
-//        DBDevice deviceManager = (DBDevice) session.getAttribute("deviceManager");
-//        if (deviceManager == null) {
-//            // Initialize the database connection and DAO
-//            try {
-//                String driverName = "org.apache.derby.jdbc.ClientDriver";
-//                String connectionUrl = "jdbc:derby://localhost:1527/iotdb";
-//                String userId = "APP";
-//                
-//                Class.forName(driverName);
-//                Connection connection = DriverManager.getConnection(connectionUrl, userId, "");
-//                deviceManager = new DBDevice(connection);
-//                session.setAttribute("deviceManager", deviceManager);
-//            } catch (ClassNotFoundException | SQLException ex) {
-//                Logger.getLogger(EditDeviceController.class.getName()).log(Level.SEVERE, null, ex);
-//                throw new ServletException("Database connection problem", ex);
-//            }
-//        }
-        DBManager manager = (DBManager) session.getAttribute("manager");
-//               User user = (User) session.getAttribute("user");
+        String action = request.getParameter("action");
+        DBManager dbManager = new DBManager();
 
-        int deviceID = Integer.parseInt(request.getParameter("deviceID"));
-        try {
-            Device device = manager.findDevice(deviceID);
-            if (device != null) {
-                session.setAttribute("device", device);
-                request.getRequestDispatcher("Devices.jsp").forward(request, response);
-            } else {
-                request.setAttribute("message", "Device not found");
-                request.getRequestDispatcher("FindDevice.jsp").forward(request, response);
+        if (null != action) switch (action) {
+            case "delete":{
+                int deviceId = Integer.parseInt(request.getParameter("deviceId"));
+            try {
+                dbManager.deleteDevice(deviceId);
+            } catch (SQLException ex) {
+                Logger.getLogger(EditDeviceController.class.getName()).log(Level.SEVERE, null, ex);
             }
+                    break;
+                }
+            case "edit":{
+                int deviceId = Integer.parseInt(request.getParameter("deviceId"));
+                Device device = dbManager.getDeviceById(deviceId);
+                request.setAttribute("editDevice", device);
+                    break;
+                }
+            case "save":{
+                int deviceId = Integer.parseInt(request.getParameter("deviceId"));
+                int deviceName = Integer.parseInt(request.getParameter("deviceName"));
+                String deviceCategory = request.getParameter("deviceCategory");
+                String deviceBrand = request.getParameter("deviceBrand");
+                int deviceQuantity = Integer.parseInt(request.getParameter("deviceQuantity"));
+                float devicePrice = Float.parseFloat(request.getParameter("devicePrice"));
+                Device device = new Device();
+                device.setDeviceId(deviceId);
+                device.setDeviceName(deviceName);
+                device.setDeviceCategory(deviceCategory);
+                device.setDeviceBrand(deviceBrand);
+                device.setDeviceQuantity(deviceQuantity);
+                device.setDevicePrice(devicePrice);
+                dbManager.updateDevice(device);
+                    break;
+                }
+            case "add":{
+                int deviceName = Integer.parseInt(request.getParameter("deviceName"));
+                String deviceCategory = request.getParameter("deviceCategory");
+                String deviceBrand = request.getParameter("deviceBrand");
+                int deviceQuantity = Integer.parseInt(request.getParameter("deviceQuantity"));
+                float devicePrice = Float.parseFloat(request.getParameter("devicePrice"));
+                Device newDevice = new Device();
+                newDevice.setDeviceName(deviceName);
+                newDevice.setDeviceCategory(deviceCategory);
+                newDevice.setDeviceBrand(deviceBrand);
+                newDevice.setDeviceQuantity(deviceQuantity);
+                newDevice.setDevicePrice(devicePrice);
+                dbManager.addDevice(newDevice);
+                    break;
+                }
+            default:
+                break;
+        }
+
+        List<Device> devices = null;
+        try {
+            devices = dbManager.getAllDevices();
         } catch (SQLException ex) {
             Logger.getLogger(EditDeviceController.class.getName()).log(Level.SEVERE, null, ex);
-            throw new ServletException("Error retrieving device", ex);
         }
+        request.setAttribute("devices", devices);
+        request.getRequestDispatcher("EditDevice.jsp").forward(request, response);
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
     }
 }

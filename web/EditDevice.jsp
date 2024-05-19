@@ -90,72 +90,108 @@
             </div>
         </nav>
     </div>
-    <div class="container mt-5">
-        <h2>Edit Devices</h2>
+    <body>
+    <%
+        HttpSession session = request.getSession(false);
+        if (session == null || session.getAttribute("user") == null || !((User) session.getAttribute("user")).isStaff()) {
+            response.sendRedirect("login.jsp");
+            return;
+        }
+
+        List<Device> devices = (List<Device>) request.getAttribute("devices");
+        String errorMessage = (String) request.getAttribute("errorMessage");
+    %>
+    <h1>Edit Device</h1>
+    <%
+        if (errorMessage != null) {
+            out.println("<p style='color: red;'>" + errorMessage + "</p>");
+        }
+    %>
+    <h2>Add New Device</h2>
+    <form action="EditDeviceController" method="post">
+        <input type="hidden" name="action" value="add">
+        <label for="newDeviceName">Device Name:</label>
+        <input type="text" id="newDeviceName" name="deviceName">
+        <br><br>
+        <label for="newDeviceCategory">Device Category:</label>
+        <input type="text" id="newDeviceCategory" name="deviceCategory">
+        <br><br>
+        <label for="newDeviceBrand">Device Brand:</label>
+        <input type="text" id="newDeviceBrand" name="deviceBrand">
+        <br><br>
+        <label for="newDeviceQuantity">Device Quantity:</label>
+        <input type="text" id="newDeviceQuantity" name="deviceQuantity">
+        <br><br>
+        <label for="newDevicePrice">Device Price:</label>
+        <input type="text" id="newDevicePrice" name="devicePrice">
+        <br><br>
+        <input type="submit" value="Add Device">
+    </form>
+    <h2>Device List</h2>
+    <table border="1">
+        <tr>
+            <th>Device ID</th>
+            <th>Device Name</th>
+            <th>Device Category</th>
+            <th>Device Brand</th>
+            <th>Device Quantity</th>
+            <th>Device Price</th>
+            <th>Actions</th>
+        </tr>
         <%
-            List<Device> devices = null;
-            try {
-                String driverName = "org.apache.derby.jdbc.ClientDriver";
-                String connectionUrl = "jdbc:derby://localhost:1527/iotbay";
-                String userId = "APP";
-                String password = "APP"; // Add your database password here
-
-                Class.forName(driverName);
-                Connection connection = DriverManager.getConnection(connectionUrl, userId, password);
-                DBDevice dbManager = new DBDevice(connection);
-                devices = dbManager.getAllDevices();
-
-                session.setAttribute("devices", devices); // Store devices in session for use in JSP
-            } catch (SQLException | ClassNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            if (devices != null && !devices.isEmpty()) {
-        %>
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>DeviceID</th>
-                    <th>DeviceName</th>
-                    <th>DeviceCategory</th>
-                    <th>DeviceBrand</th>
-                    <th>DeviceQuantity</th>
-                    <th>DevicePrice</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                <%
-                    for (Device device : devices) {
-                %>
-                <tr>
-                    <td><%= device.getDeviceId() %></td>
-                    <td><%= device.getDeviceName() %></td>
-                    <td><%= device.getDeviceCategory() %></td>
-                    <td><%= device.getDeviceBrand() %></td>
-                    <td><%= device.getDeviceQuantity() %></td>
-                    <td><%= device.getDevicePrice() %></td>
-                    <td>
-                        <form action="DeleteDeviceController" method="post" style="display:inline;">
-                            <input type="hidden" name="deviceId" value="<%= device.getDeviceId() %>">
-                            <button type="submit" class="btn btn-danger">Delete</button>
-                        </form>
-                        <form action="EditDeviceController" method="post" style="display:inline;">
-                            <input type="hidden" name="deviceId" value="<%= device.getDeviceId() %>">
-                            <button type="submit" class="btn btn-primary">Edit</button>
-                        </form>
-                    </td>
-                </tr>
-                <%
-                    }
-                %>
-            </tbody>
-        </table>
-        <%
-            } else {
-                out.println("<p>No devices found.</p>");
+            if (devices != null) {
+                for (Device device : devices) {
+                    out.println("<tr>");
+                    out.println("<td>" + device.getDeviceId() + "</td>");
+                    out.println("<td>" + device.getDeviceName() + "</td>");
+                    out.println("<td>" + device.getDeviceCategory() + "</td>");
+                    out.println("<td>" + device.getDeviceBrand() + "</td>");
+                    out.println("<td>" + device.getDeviceQuantity() + "</td>");
+                    out.println("<td>" + device.getDevicePrice() + "</td>");
+                    out.println("<td>");
+                    out.println("<form action='EditDeviceController' method='post' style='display:inline;'>");
+                    out.println("<input type='hidden' name='action' value='edit'>");
+                    out.println("<input type='hidden' name='deviceId' value='" + device.getDeviceId() + "'>");
+                    out.println("<input type='submit' value='Edit'>");
+                    out.println("</form>");
+                    out.println("<form action='EditDeviceController' method='post' style='display:inline;'>");
+                    out.println("<input type='hidden' name='action' value='delete'>");
+                    out.println("<input type='hidden' name='deviceId' value='" + device.getDeviceId() + "'>");
+                    out.println("<input type='submit' value='Delete'>");
+                    out.println("</form>");
+                    out.println("</td>");
+                    out.println("</tr>");
+                }
             }
         %>
-    </div>
+    </table>
+    <%
+        Device editDevice = (Device) request.getAttribute("editDevice");
+        if (editDevice != null) {
+    %>
+    <h2>Edit Device Details</h2>
+    <form action="EditDeviceController" method="post">
+        <input type="hidden" name="action" value="save">
+        <input type="hidden" name="deviceId" value="<%= editDevice.getDeviceId() %>">
+        <label for="deviceName">Device Name:</label>
+        <input type="text" id="deviceName" name="deviceName" value="<%= editDevice.getDeviceName() %>">
+        <br><br>
+        <label for="deviceCategory">Device Category:</label>
+        <input type="text" id="deviceCategory" name="deviceCategory" value="<%= editDevice.getDeviceCategory() %>">
+        <br><br>
+        <label for="deviceBrand">Device Brand:</label>
+        <input type="text" id="deviceBrand" name="deviceBrand" value="<%= editDevice.getDeviceBrand() %>">
+        <br><br>
+        <label for="deviceQuantity">Device Quantity:</label>
+        <input type="text" id="deviceQuantity" name="deviceQuantity" value="<%= editDevice.getDeviceQuantity() %>">
+        <br><br>
+        <label for="devicePrice">Device Price:</label>
+        <input type="text" id="devicePrice" name="devicePrice" value="<%= editDevice.getDevicePrice() %>">
+        <br><br>
+        <input type="submit" value="Save">
+    </form>
+    <%
+        }
+    %>
 </body>
 </html>

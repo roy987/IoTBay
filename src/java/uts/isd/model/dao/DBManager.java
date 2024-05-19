@@ -35,6 +35,10 @@ public class DBManager {
         return sdf.format(cal.getTime());
     }
 
+    public DBManager() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
     // Find user by email and password in the database
     public User findUser(String email, String password) throws SQLException {
         String query = "SELECT * FROM USERS WHERE email = '" + email + "' AND password = '" + password + "'";
@@ -519,6 +523,18 @@ public class DBManager {
     }
 
     public void updateDevice(int deviceId, String deviceName, String deviceCategory, String deviceBrand, float devicePrice, int deviceQuantity) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public Device getDeviceById(int deviceId) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void updateDevice(Device device) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void addDevice(Device newDevice) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
